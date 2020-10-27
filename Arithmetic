@@ -1,0 +1,33 @@
+/* a program that asks the user to enter two numbers, obtains them from the user
+ and prints their sum, product, difference, quotient and remainder*/
+
+#include <stdio.h> 
+
+ // function main begins program execution
+int main(void)
+{
+	int num_1; // first number to be entered by user
+	int num_2; // second number to be entered by user
+	int sum, product, difference, quotient, remainder; // variables to store results
+
+	printf("Enter two integers:\n");
+
+	scanf_s("%d%d", &num_1, &num_2); // read two integers
+
+	sum = num_1 + num_2; // assign total to sum
+	printf("Sum is %d\n", sum); // print sum
+
+	product = num_1 * num_2;
+	printf("Product is %d\n", product);
+
+	difference = num_1 - num_2;
+	printf("Difference is %d\n", difference);
+
+	quotient = num_1 / num_2;
+	printf("Quotient is %d\n", quotient);
+
+	remainder = num_1 % num_2;
+	printf("Remainder is %d\n", remainder);
+
+	printf("\nThank you\nfor\nusing\nthe program!\n\n\n");
+} // end function main
