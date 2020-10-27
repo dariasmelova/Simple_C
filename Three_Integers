@@ -1,0 +1,44 @@
+/* a program that inputs three different integers from the keyboard, 
+then prints the sum, the average, the product, the smallestand the largest of these numbers*/
+
+#include <stdio.h>
+
+// function main begins program execution 
+int main(void)
+{
+	int integer1; // first number to be entered by user 
+	int integer2; // second number to be entered by user
+	int integer3; // third number to be entered by user
+
+	printf("Input three different integers\n"); // prompt
+	scanf_s("%d%d%d", &integer1, &integer2, &integer3); // read the integers
+
+	printf("Sum is %d\n", integer1 + integer2 + integer3); // sum
+	printf("Average is %d\n", (integer1 + integer2 + integer3) / 3); // average
+	printf("Product is %d\n", integer1 * integer2 * integer3); // product
+
+	if (integer1 < integer2)
+		if (integer1 < integer3)
+			printf("Smallest is %d\n", integer1);
+
+	if (integer2 < integer1)
+		if (integer2 < integer3)
+			printf("Smallest is %d\n", integer2);
+
+	if (integer3 < integer2)
+		if (integer3 < integer1)
+			printf("Smallest is %d\n", integer3);
+
+	if (integer1 > integer2)
+		if (integer1 > integer3)
+			printf("Largest is %d\n", integer1);
+
+	if (integer2 > integer1)
+		if (integer2 > integer3)
+			printf("Largest is %d\n", integer2);
+
+	if (integer3 > integer2)
+		if (integer3 > integer1)
+			printf("Largest is %d\n", integer3);
+
+} // end function main
