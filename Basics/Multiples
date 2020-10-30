@@ -1,0 +1,20 @@
+// a program that reads in two integers and determines whether the first is a multiple of the second
+
+#include <stdio.h>
+
+// function main begins program execution
+int main(void)
+{
+	int num1, num2;
+
+	printf("Enter two integers:\n");
+
+	scanf_s("%d%d", &num1, &num2);
+
+	if (num1 % num2 == 0)
+		printf("The first integer is a multiple of the second.\n");
+
+	if (num1 % num2 != 0)
+		printf("The first integer is not a multiple of the second.\n");
+
+} // end function main
