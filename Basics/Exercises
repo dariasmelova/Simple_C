@@ -1,0 +1,20 @@
+1.	Arithmetic
+a program that asks the user to enter two numbers, obtains them from the user and prints their sum, product, difference, quotient and remainder
+2.	Circle
+a program that reads in the radius of a circle and prints the circle’s diameter, circumference and area
+3.	Comparing Integers
+a program that asks the user to enter two integers, obtains the numbers from the user, then prints the larger number followed by the words “is larger”.  If the numbers are equal, print the message “These numbers are equal”.
+4.	Digits Separating
+a program that inputs one five-digit number, separates the number into its individual digits and prints the digits separated from one another by three spaces each
+5.	Horizontal Tabs
+a program that calculates the squares and cubes of the numbers from 0 to 10 and prints a table of value
+6.	Multiples
+a program that reads in two integers and determines whether the first is a multiple of the second
+7.	Odd or Even
+a program that reads an integer and determines and prints whether it’s odd or even
+8.	Русский вирус
+Программа, которая печатает на русском языке
+9.	Shapes
+a program that prints shapes with asterisks
+10.	Three Integers
+a program that inputs three different integers from the keyboard, then prints the sum, the average, the product, the smallest and the largest of these numbers
