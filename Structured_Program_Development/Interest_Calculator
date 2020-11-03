@@ -1,0 +1,31 @@
+// a program that calculates simple interest for several loans
+
+#include <stdio.h>
+
+// function main begins program execution
+int main(void)
+{
+	float principal, rate, interest;
+	int days;
+
+	printf("%s", "Enter loan principal (-1 to end): ");
+	scanf_s("%f", &principal);
+
+	if (principal == -1)
+		printf_s("No loan principals were entered\n");
+	else
+	{
+		// loop while sentinel value not yet read from user
+		while (principal != -1) {
+			printf("%s", "Enter interest rate: ");
+			scanf_s("%f", &rate);
+			printf("%s", "Enter term of the loan in days: ");
+			scanf_s("%d", &days);
+			interest = principal * rate * (float)days / 365;
+			printf("The interest charge is: %.2f\n", interest);
+			printf("%s", "Enter loan principal (-1 to end): ");
+			scanf_s("%f", &principal);
+
+		} // end while
+	} // end else
+} // end function main
