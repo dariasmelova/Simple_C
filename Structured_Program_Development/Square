@@ -1,0 +1,17 @@
+// a program that reads in the side of a square between 1 and 20 and then prints that square out of asterisks
+
+#include <stdio.h>
+
+int main(void)
+{
+	int size, row = 1, column;
+	printf("Enter square size from 1 to 20: \n");
+	scanf_s("%d", &size);
+
+	while (row++ <= size) {
+		column = 1;
+		while (column++ <= size)
+			printf("*");
+		puts("");
+	}
+}
