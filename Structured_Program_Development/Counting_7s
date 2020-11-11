@@ -1,0 +1,19 @@
+// a program that reads an integer (5 digits or fewer) and determines how many digits in the integer are 7s
+
+#include <stdio.h>
+
+int main(void)
+{
+	int number, counter = 0;
+	printf("Enter any integer (5 digits or fewer): \n");
+	scanf_s("%d", &number);
+
+	while (number > 9) {
+		if ((number % 10) == 7)
+			counter++;
+		number /= 10;
+	}
+	if (number == 7)
+		counter++;
+	printf("The number includes seven %d time(s)", counter);
+}
