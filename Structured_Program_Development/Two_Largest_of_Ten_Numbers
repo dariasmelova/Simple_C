@@ -1,0 +1,25 @@
+// a program that finds the two largest values of the 10 numbers
+
+#include <stdio.h>;
+
+int main(void)
+{
+	int number, largest_1, largest_2, counter = 2;
+	printf("Enter first number: ");
+	scanf_s("%d", &largest_1);
+	printf("Enter next number: ");
+	scanf_s("%d", &largest_2);
+
+	while (++counter <= 10) {
+		printf("Enter next number: ");
+		scanf_s("%d", &number);
+
+		if (largest_1 < largest_2) {
+			if (largest_1 < number)
+				largest_1 = number;
+		}
+		else if (largest_2 < number)
+				largest_2 = number;
+		}
+	printf("Two largest numbers: %d and %d", largest_1, largest_2);
+}
