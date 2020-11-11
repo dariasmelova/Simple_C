@@ -1,0 +1,24 @@
+// a program that prints the decimal equivalent of a binary number
+
+#include <stdio.h>
+
+int main(void)
+{
+	int number, x = 0, last, counter = 1;
+	printf("Enter any binary number: \n");
+	scanf_s("%d", &number);
+
+	while (number >= 10) {
+		last = number % 10;
+		number = number / 10;
+
+		if (last == 1)
+			x += counter;
+
+		counter *= 2;
+	}
+
+	x = x + number * counter;
+
+	printf("Corresponding decimal number is %d", x);
+}
