@@ -13,10 +13,10 @@ int main(void)
 
 	scanf_s("%d", &number);
 
-	printf("%d   ", number / 10000);
-	printf("%d   ", (number / 1000) - (number / 10000 * 10));
-	printf("%d   ", (number / 100) - (number / 1000 * 10));
-	printf("%d   ", (number / 10) - (number / 100 * 10));
-	printf("%d   \n", number - (number / 10 * 10));
+	printf("%d   ", number/10000);
+	printf("%d   ", (number/1000)%10);
+	printf("%d   ", (number/100)%10);
+	printf("%d   ", (number/10)%10);
+	printf("%d   \n", number%10);
 
 } // end function  main 
