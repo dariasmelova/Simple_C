@@ -1,0 +1,22 @@
+/* a program that reads three nonzero integers and determines
+and prints whether they could be the sides of a right triangle */
+
+#include <stdio.h>
+
+// function main begins program execution
+int main(void) {
+
+	int a, b, c;
+
+	printf("Enter three nonzero integers : \n");
+	scanf_s("%d%d%d", &a, &b, &c);
+
+	if ((a * a) == ((b * b) + (c * c)))
+		printf("These integers could be the sides of a right triangle.");
+	else if ((c * c) == ((b * b) + (a * a)))
+		printf("These integers could be the sides of a right triangle.");
+	else if ((b * b) == ((a * a) + (c * c)))
+		printf("These integers could be the sides of a right triangle.");
+	else
+		printf("These integers could NOT be the sides of a right triangle.");
+}
