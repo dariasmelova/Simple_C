@@ -1,0 +1,28 @@
+// program that displays the checkerboard pattern
+
+#include <stdio.h>
+
+int main(void)
+{
+	int row = 1, column = 1;
+	while (row <= 8) {
+		if (row % 2 == 0) {
+			while (column <= 16) {
+				if (column % 2 == 0)
+					printf("*");
+				else printf(" ");
+				column++;
+			}
+		}
+		else
+			while (column <= 16) {
+				if (column % 2 != 0)
+					printf("*");
+				else printf(" ");
+				column++;
+			}
+		row++;
+		printf("\n");
+		column = 1;
+	}
+}
