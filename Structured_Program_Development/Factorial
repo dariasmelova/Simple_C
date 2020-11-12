@@ -1,0 +1,18 @@
+// a program that reads a nonnegative integer and computes and prints its factorial
+
+#include <stdio.h>
+
+int main(void) {
+	int number, factorial = 1, counter;
+
+	printf("Enter a nonnegative integer: ");
+	scanf_s("%d", &number);
+
+	counter = number - 1;
+
+	while (counter >= 0) {
+		factorial = factorial * (number - counter--);
+	}
+
+	printf("Factorial is %d", factorial);
+}
