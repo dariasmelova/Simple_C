@@ -1,0 +1,21 @@
+/* a program that sums a sequence of integers;
+the first integer specifies the number of values remaining to be entered */
+
+#include <stdio.h>
+
+// function main begins program execution
+int main(void)
+{
+	int sum = 0, counter, number, x;
+
+	printf("Enter how many integers I must sum: ");
+	scanf_s("%d", &number);
+
+	for (counter = 1; counter <= number; counter++) {
+		printf("Enter an integer: ");
+		scanf_s("%d", &x);
+		sum += x;
+	} // end for
+
+	printf("Sum is %d\n", sum); // output sum
+} // end function main
