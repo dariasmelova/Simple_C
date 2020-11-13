@@ -1,0 +1,11 @@
+// program that calculates and prints the sum of the even integers from 2 to 30.
+
+#include <stdio.h>
+
+int main(void) {
+	int integer, sum = 0;
+	for (integer = 2; integer <= 30; integer += 2) {
+		sum += integer;
+	}
+	printf("Sum is %d.\n", sum);
+}
