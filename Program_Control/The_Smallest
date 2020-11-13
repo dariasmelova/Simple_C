@@ -1,0 +1,29 @@
+/* a program that finds the smallest of several integers;
+the first value specifies the number of values remaining*/
+
+#include <stdio.h>
+
+int main(void) {
+	int integer, smallest, counter=0;
+
+	while (counter < 2) {
+		printf("Please, define how many integers are to be entered (at least 2): \n");
+		scanf_s("%d", &counter);
+	}
+
+	printf("Please, enter the first integer: \n");
+	scanf_s("%d", &integer);
+	counter--;
+    smallest = integer;
+
+	while (counter>0) {
+		printf("Please, enter the next integer: \n");
+		scanf_s("%d", &integer);
+		counter--;
+		if (integer < smallest) {
+			smallest = integer;
+		}
+	}
+
+	printf("The smallest integer is %d", smallest);
+}
