@@ -1,0 +1,34 @@
+/* a program that calculates  the average of several integers;
+the last value read with scanf is the sentinel 9999 */
+
+#include <stdio.h>
+
+// function main begins program execution
+int main(void)
+{
+	int number, sum = 0, counter = 0;
+	float average;
+
+	printf("%s", "This program calculetes the average of several intagers. Enter two or more integers, 9999 to end: ");
+	scanf_s("%d", &number);
+
+	while (number == 9999) {
+		printf("Please enter at least two integers before 9999!\n");
+		scanf_s("%d", &number);
+	}
+
+	while (number != 9999) {
+		sum += number;
+		counter++; 
+		printf("%s", "Enter integer, 9999 to end: ");
+		scanf_s("%d", &number);
+	} 
+
+	if (counter == 1)
+		printf("You entered only one integer! Press any key to finish, then try again!\n");
+	else {
+		average = (float)sum / counter;
+		printf("Average is %.2f\n", average);
+	} // end else
+
+} // end function main
