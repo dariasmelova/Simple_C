@@ -1,0 +1,11 @@
+// a program that calculates and prints the product of the odd integers from 1 to 15
+
+#include <stdio.h>
+
+int main(void) {
+	int integer, product = 1;
+	for (integer = 1; integer <= 15; integer += 2) {
+		product *= integer;
+	}
+	printf("Product is %d.\n", product);
+}
