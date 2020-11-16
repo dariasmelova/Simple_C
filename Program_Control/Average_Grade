@@ -1,0 +1,85 @@
+// a program that counts letter grades with switch, then calculates average
+
+#include <stdio.h>
+
+// function main begins program execution
+int main(void)
+{
+	int grade; // one grade 
+	unsigned int aCount = 0; // number of As
+	unsigned int bCount = 0; // number of Bs
+	unsigned int cCount = 0; // number of Cs
+	unsigned int dCount = 0; // number of Ds
+	unsigned int fCount = 0; // number of Fs
+	int average;
+
+	puts("Enter grades.");
+	puts("Enter the EOF character to end input.");
+
+	// loop until user types end-of-file key sequence
+	while ((grade = getchar()) != EOF) {
+
+		// determine which grade was input
+		switch (grade) { // switch nested in while
+
+		case 'A': // grade was uppercase A
+			++aCount; // increment aCount
+			break; // necessary to exit switch
+
+		case 'B': // grade was uppercase B
+			++bCount; // increment bCount
+			break; // exit switch
+
+		case 'C': // grade was uppercase C
+			++cCount; // increment cCount
+			break; // exit switch
+
+		case 'D': // grade was uppercase D
+			++dCount; // increment dCount
+			break; // exit switch
+
+		case 'F': // grade was uppercase F
+			++fCount; // increment fCount
+			break; // exit switch
+
+		case '\n': // ignore newlines,
+		case '\t': // tabs,
+		case ' ': // and spaces in input
+			break; // exit switch
+
+		default: // catch all other characters
+			printf("%s", "Incorrect grade entered.");
+			puts(" Enter a new grade.");
+			break; // optional; will exit switch anyway
+		} // end switch
+	} // end while
+
+	// output summary of results
+
+	average = ((5 * aCount) + (4 * bCount) + (3 * cCount) + (2 * dCount) + fCount) / (aCount + bCount + cCount + dCount + fCount);
+	
+	switch (average) { 
+
+	case 5: 
+		printf("Average grade is A.\n");
+		break; 
+
+	case 4:
+		printf("Average grade is B.\n");
+		break;
+
+	case 3:
+		printf("Average grade is C.\n");
+		break;
+
+	case 2:
+		printf("Average grade is D.\n");
+		break;
+
+	case 1:
+		printf("Average grade is F.\n");
+		break;
+
+	} // end switch
+	
+} // end function main
