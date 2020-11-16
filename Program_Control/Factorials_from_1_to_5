@@ -1,0 +1,13 @@
+// a program that evaluates the factorials of the integers from 1 to 5
+
+#include <stdio.h>
+
+int main(void) {
+	unsigned int integer = 1, factorial = 1;
+	printf("%8s\t%10s\n", "Number", "Factorial");
+	do {
+		factorial *= integer;
+		printf("%8d\t%10d\n", integer, factorial);
+		integer++;
+	} while (integer <= 5); // end of do..while
+}
