@@ -1,0 +1,32 @@
+// a program that calculates compound interest for 5% - 10% rates
+
+#include <stdio.h>
+#include <math.h>  
+
+// function main begins program execution
+int main(void)
+{
+	double amount; // amount on deposit
+	double principal = 1000.0; // starting principal
+	double rate = .05; // annual interest rate
+	unsigned int year; // year counter
+
+
+	for (rate = .05; rate <= .10; rate += .01) {
+		// output table column heads
+		printf("If rate is %.0f%%:\n", rate*100);
+		printf("%4s%21s\n", "Year", "Amount on deposit");
+
+		// calculate amount on deposit for each of ten years
+		for (year = 1; year <= 10; ++year) {
+
+			// calculate new amount for specified year
+			amount = principal * pow(1.0 + rate, year);
+
+			// output one table row
+			printf("%2u%23.2f$\n", year, amount);
+		} // end inner for
+		puts("");
+	} // end for
+
+} // end function main
