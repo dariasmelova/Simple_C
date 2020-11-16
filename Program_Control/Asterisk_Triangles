@@ -1,0 +1,45 @@
+// a program that prints triangles
+
+#include <stdio.h>
+
+int main(void) {
+	int row, column;
+
+	printf("A\n");
+	for (row = 1; row <= 10; row++) {
+		for (column = 1; column <= row; column++) {
+			printf("*");
+		}
+		printf("\n");
+	}
+
+	printf("B\n");
+	for (row = 10; row >= 1; row--) {
+		for (column = 1; column <= row; column++) {
+			printf("*");
+		}
+		printf("\n");
+	}
+
+	printf("C\n");
+	for (row = 10; row >= 1; row--) {
+		for (column = 1; column <= (10 - row); column++) {
+			printf(" ");
+		}
+		for (column = 1; column <= row; column++) {
+			printf("*");
+		}
+		printf("\n");
+	}
+
+	printf("D\n");
+	for (row = 1; row <= 10; row++) {
+		for (column = 1; column <= (10 - row); column++) {
+			printf(" ");
+		}
+		for (column = 1; column <= row; column++) {
+			printf("*");
+		}
+		printf("\n");
+	}
+}
