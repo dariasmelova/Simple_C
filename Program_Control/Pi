@@ -1,0 +1,16 @@
+/* a program that prints a table that shows the value of π approximated by one term of this series, by two terms, 
+and so on until it first gets 3.14159 */
+
+#include <stdio.h>
+
+int main(void) {
+	int a, b, counter;
+	double p = 0;
+
+	for (counter = 2, a = 1, b = 3; counter<=100, a<=300000, b<=300000; counter+=2, a+=4, b+=4) {
+		p += 4/(float)a - 4/(float)b;
+		printf("%21d%21.5f\n", counter, p);
+		if (counter == 133756)
+			break;
+	}
+}
