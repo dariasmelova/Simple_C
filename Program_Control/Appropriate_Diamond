@@ -1,0 +1,50 @@
+/* a program that reads an odd number in the range 1 to 19 to specify the number of rows in the diamond
+and prints a diamond of the appropriate size */
+
+#include <stdio.h>
+
+int main(void) {
+	int x, a, b, c, d;
+
+	printf("Enter an odd number in the range 3 to 99: ");
+	scanf_s("%d", &x);
+
+	while (x % 2 == 0 || x < 3 || x>99) {
+		printf("You entered the number which is\n");
+		if (x % 2 == 0)
+			printf("NOT an odd number\n");
+		if (x < 3)
+			printf("LESS than 3\n");
+		if (x > 99)
+			printf("BIGGER than 99\n");
+		printf("Enter an odd number in the range 3 to 99: ");
+		scanf_s("%d", &x);
+	}
+
+	a = (x + 1) / 2;
+
+	for (; a >= 1; a--) {
+		for (b = 1; b < a; b++) {
+			printf(" ");
+		}
+		for (c = 1; c <= ((x + 2) - 2 * a); c++) {
+			printf("*");
+		}
+		for (d = 1; d < a; d++) {
+			printf(" ");
+		}
+		printf("\n");
+	}
+	for (a = 2; a <= ((x + 1) / 2); a++) {
+		for (b = 1; b < a; b++) {
+			printf(" ");
+		}
+		for (c = ((x + 2) - 2 * a); c >= 1; c--) {
+			printf("*");
+		}
+		for (d = 1; d < a; d++) {
+			printf(" ");
+		}
+		printf("\n");
+	}
+}
