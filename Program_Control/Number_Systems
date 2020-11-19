@@ -1,0 +1,79 @@
+// a program that prints numbers 1 to 256 in the decimal system, binary system, octal system and hexadecimal system
+
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main(void) {
+	
+	unsigned int decimal;
+	int temp, power, b;
+
+	printf("%-12s%-12s%-8s%-1s\n", "DECIMAL", "BINARY", "OCTAL", "HEXADECIMAL");
+
+	for (decimal = 1; decimal <= 256; decimal++) {
+		printf("%-12u", decimal);
+
+		temp = decimal; 
+
+		power = -1;
+		while (temp > 0) {
+			temp /= 2;
+			power++;
+		}
+		for (; power >= 0; power--) {
+			printf("%d", (decimal / (int)pow(2, power)) % 2);
+		}
+		if (decimal <= 7)
+			printf("\t\t");
+		else printf("\t");
+
+		temp = decimal;
+
+		power = -1;
+		while (temp > 0) {
+			temp /= 8;
+			power++;
+		}
+		for (; power >= 0; power--) {
+			printf("%d", (decimal / (int)pow(8, power)) % 8);
+		}
+		printf("\t");
+
+		temp = decimal;
+
+		power = -1;
+		while (temp > 0) {
+			temp /= 16;
+			power++;
+		}
+		for (; power >= 0; power--) {
+			b = (decimal / (int)pow(16, power)) % 16;
+			if (b >= 0 && b <= 9)
+				printf("%d", b);
+			else {
+				switch (b) {
+				case 10:
+					printf("%c", 'A');
+					break;
+				case 11:
+					printf("%c", 'B');
+					break;
+				case 12:
+					printf("%c", 'C');
+					break;
+				case 13:
+					printf("%c", 'D');
+					break;
+				case 14:
+					printf("%c", 'E');
+					break;
+				case 15:
+					printf("%c", 'F');
+					break;
+				}
+			}
+		}
+		printf("\n");
+	}
+}
