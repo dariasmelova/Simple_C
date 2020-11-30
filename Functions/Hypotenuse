@@ -1,0 +1,23 @@
+// a program that calculates the length of the hypotenuse of three right triangles when the other two sides are given
+
+#include <stdio.h>
+#include <math.h>
+
+double hypotenuse(double a, double b);
+
+int main(void)
+{
+	double leg1, leg2;
+	printf("Please, enter first triangle's legs: \n");
+	scanf_s("%lf%lf", &leg1, &leg2);
+	printf("Hypotenuse is %.2f\n", hypotenuse(leg1, leg2));
+	printf("Please, enter second triangle's legs: \n");
+	scanf_s("%lf%lf", &leg1, &leg2);
+	printf("Hypotenuse is %.2f\n", hypotenuse(leg1, leg2));
+	printf("Please, enter third triangle's legs: \n");
+	scanf_s("%lf%lf", &leg1, &leg2);
+	printf("Hypotenuse is %.2f\n", hypotenuse(leg1, leg2));
+}
+double hypotenuse(double a, double b) {
+	return sqrt(pow(a, 2) + pow(b, 2));
+}
