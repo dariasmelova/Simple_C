@@ -1,0 +1,23 @@
+// a program where a function is invoked to calculate x raised to power y
+
+#include <stdio.h>
+
+unsigned int integerPower(int base, unsigned int exponent);
+
+int main(void)
+{
+	int x;
+	unsigned int y;
+
+	printf("Please, enter the base (an integer) and the exponent (a positive non-zero integer): \n");
+	scanf_s("%d%u", &x, &y);
+	printf("%d raised to power %u is %d\n", x, y, integerPower(x, y));
+}
+unsigned int integerPower(int base, unsigned int exponent) {
+	int counter;
+	unsigned int power = 1;
+	for (counter = 1; counter <= exponent; counter++) {
+		power *= base;
+	}
+	return power;
+}
