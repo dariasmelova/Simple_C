@@ -1,0 +1,45 @@
+// a program that rounds a number to the nearest tenth, hundredth and thousandth
+
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+
+float roundToTenths(float x);
+float roundToHundreths(float x);
+float roundToThousands(float x);
+
+int main(void)
+{
+	float number;
+	printf("Pi equals 3.14159265358979323846264338327950288\n");
+	number = 3.1415926535;
+
+	printf("Let's round it to the nearest tenth: %.1f\n", roundToTenths(number));
+	printf("Let's round it to the nearest hundredth: %.2f\n", roundToHundreths(number));
+	printf("Let's round it to the nearest thousandth: %.3f\n", roundToThousands(number));
+
+	printf("Golden Ratio equals 1.61803398874989484820458683436563812\n");
+	number = 1.6180339887;
+
+	printf("Let's round it to the nearest tenth: %.1f\n", roundToTenths(number));
+	printf("Let's round it to the nearest hundredth: %.2f\n", roundToHundreths(number));
+	printf("Let's round it to the nearest thousandth: %.3f\n", roundToThousands(number));
+
+	printf("Euler number equals 2.71828182845904523536028747135266250\n");
+	number = 2.7182818284;
+
+	printf("Let's round it to the nearest tenth: %.1f\n", roundToTenths(number));
+	printf("Let's round it to the nearest hundredth: %.2f\n", roundToHundreths(number));
+	printf("Let's round it to the nearest thousandth: %.3f\n", roundToThousands(number));
+
+}
+
+float roundToTenths(float x) {
+	return floor(x * 10.00 + .5) / 10;
+}
+float roundToHundreths(float x) {
+	return floor(x * 100.00 + .5) / 100;
+}
+float roundToThousands(float x) {
+	return floor(x * 1000.00 + .5) / 1000;
+}
