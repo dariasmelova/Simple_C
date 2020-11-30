@@ -1,0 +1,18 @@
+// a program that rounds a number to the nearest number
+
+#include <stdio.h>
+#include <math.h>
+
+// function main begins program execution
+int main(void)
+{
+	float number;
+	printf("Enter an number and I will round it ti the nearest integer or enter 999 to end input: \n");
+	scanf_s("%f", &number);
+	while (number != 999) {
+		printf("original = %.2f, rounded = %.2f\n", number, floor(number + .5));
+		printf("Enter an number and I will round it ti the nearest integer or enter 999 to end input: \n");
+		scanf_s("%f", &number);
+	}
+
+} // end main
