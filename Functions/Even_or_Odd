@@ -1,0 +1,24 @@
+/* a program that passes integers from 1 to 100 to function even, 
+which determines whether an integer is even */
+
+#include <stdio.h>
+
+int even(int a);
+
+int main(void)
+{
+	int integer;
+
+	for (integer = 1; integer <= 100; integer++) {
+		if (even(integer))
+			printf("Integer %d is even.\n", integer);
+		else
+			printf("Integer %d is odd.\n", integer);
+	}
+}
+int even(int a) {
+	if (a % 2 == 0)
+		return 1;
+	else
+		return 0;
+}
