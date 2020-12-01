@@ -1,0 +1,23 @@
+/* a program with a function a function that displays a solid square of asterisks whose side is
+specified in integer parameter side */
+
+#include <stdio.h>
+
+void drawSquare(int side);
+
+int main(void)
+{
+	int size;
+	printf("Enter the size of the square: \n");
+	scanf_s("%d", &size);
+	drawSquare(size);
+}
+void drawSquare(int side) {
+	int a, b;
+	for (a = 1; a <= side; a++) {
+		for (b = 1; b <= side; b++) {
+			printf("*");
+		}
+		puts("");
+	}
+}
