@@ -1,0 +1,22 @@
+/* a program with a function that takes two moments of time 
+and returns the number of seconds between them */
+
+#include <stdio.h>
+#include <math.h>
+
+int secondsTime(int hours, int minutes, int seconds);
+
+int main(void)
+{
+	int hours1, minutes1, seconds1;
+	int hours2, minutes2, seconds2;
+	printf("Please, enter the first moment: hours, minutes and seconds, for example 12 30 00: \n");
+	scanf_s("%d%d%d", &hours1, &minutes1, &seconds1);
+	printf("Please, enter the second moment: hours, minutes and seconds, for example 13 30 00: \n");
+	scanf_s("%d%d%d", &hours2, &minutes2, &seconds2);
+
+	printf("Difference in time between two moments you entered is %d seconds", secondsTime(hours2, minutes2, seconds2) - secondsTime(hours1, minutes1, seconds1));
+}
+int secondsTime(int hours, int minutes, int seconds) {
+	return hours * 60 * 60 + minutes * 60 + seconds;
+}
