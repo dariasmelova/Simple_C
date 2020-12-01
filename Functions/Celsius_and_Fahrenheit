@@ -1,0 +1,33 @@
+/* a program that prints charts showing the Fahrenheit equivalents of all Celsius temperatures 
+from 0 to 100 degrees, and the Celsius equivalents of all Fahrenheit temperatures from 33 to 212 degrees */
+
+#include <stdio.h>
+#include <math.h>
+
+double celsius(int a);
+double fahrenheit(int b);
+
+int main(void)
+{
+	int c, f;
+
+	printf("Celsius to Fahrenheit\n");
+	for (c = 1; c <= 100; c++) {
+		printf("%d\t%d\t", c, (int)floor(fahrenheit(c) + .5));
+		if (c % 5 == 0)
+			printf("\n");
+	}
+	printf("\n\n\nFahrenheit to Celsius\n");
+
+	for (f = 33; f <= 212; f++) {
+		printf("%d\t%d\t", f, (int)floor(celsius(f) + .5));
+		if (f % 4 == 0)
+			printf("\n");
+	}
+}
+double celsius(int a) {
+	return (a - 32) / 1.8;
+}
+double fahrenheit(int b) {
+	return b * 1.8 + 32;
+}
