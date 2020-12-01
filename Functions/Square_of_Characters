@@ -1,0 +1,32 @@
+// a program that forms a square out of whatever character is contained in character parameter
+
+#include <stdio.h>
+
+void drawSquare(int side, char fillCharacter);
+
+int main(void)
+{
+	int size;
+	char Character;
+	printf("Enter the size of the square: \n");
+	scanf_s("%d", &size);
+	printf("Enter any character: \n");
+	Character = getchar();
+	switch (Character) {
+	case '\n':
+	case ' ':
+	case ',':
+		break;
+	}
+	Character = getchar();
+	drawSquare(size, Character);
+}
+void drawSquare(int side, char fillCharacter) {
+	int a, b;
+	for (a = 1; a <= side; a++) {
+		for (b = 1; b <= side; b++) {
+			printf("%c", fillCharacter);
+		}
+		puts("");
+	}
+}
