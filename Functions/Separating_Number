@@ -1,0 +1,38 @@
+// a program that separates a number into a series od digits and prints these digits with two spaces between
+
+#include <stdio.h>
+#include <math.h>
+#include <time.h>
+
+void printDigit(unsigned int a);
+
+int main(void)
+{
+	int x;
+
+	srand(time(NULL));
+	x = rand();
+	printf("Random integer is %d\n", x);
+
+	printDigit(x);
+}
+void printDigit(unsigned int a) {
+	if (a < 10)
+		printf("%d", a);
+	else {
+		int digitCounter = 0;
+		int copy = a;
+		while (copy >= 10) {
+			copy /= 10;
+			digitCounter++;
+		}
+
+		while (a >= 10) {
+			for (digitCounter; digitCounter >= 1; digitCounter--) {
+				printf("%d  ", a / (int)pow(10, digitCounter));
+				a %= (int)pow(10, digitCounter);
+			}
+			printf("%d", a);
+		}
+	}
+}
