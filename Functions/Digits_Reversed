@@ -1,0 +1,39 @@
+// a program prints any number with its digits reversed
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+
+int reverseNumber(int a);
+
+int main(void)
+{
+	int a;
+
+	srand(time(NULL));
+	a = rand();
+	printf("Random number is %d\n", a);
+
+	printf("Same number reversed is %d\n", reverseNumber(a));
+}
+int reverseNumber(int a) {
+	int newNumber = 0;
+	int digitCounter = 0;
+	if (a < 10)
+		newNumber = a;
+	else {
+
+		int copy = a;
+		while (copy >= 10) {
+			copy /= 10;
+			digitCounter++;
+		}
+		while (a >= 10) {
+			newNumber += a % 10 * (int)pow(10, digitCounter--);
+			a /= 10;
+		}
+		newNumber += a;
+	}
+	return newNumber;
+}
