@@ -1,0 +1,27 @@
+// a program that determines and prints all the prime numbers between 1 and 10000
+
+#include <stdio.h>
+
+int prime(int a);
+
+int main(void)
+{
+	int counter;
+
+	printf("List of prime numbers between 1 and 10000: \n");
+
+	for (counter = 1; counter <= 10000; counter++) {
+		if (prime(counter))
+			printf("%d\n", counter);
+	}
+
+}
+int prime(int a) {
+	int counter;
+	for (counter = 2; counter < a; counter++) {
+		if (a % counter == 0)
+			return 0;
+		else
+			return 1;
+	}
+}
