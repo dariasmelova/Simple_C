@@ -1,0 +1,32 @@
+/* a program that inputs average income and returns 
+4 if it’s 90–100, 
+3 if it’s 80–89, 
+2 if it’s 70–79, 
+1 if it’s 60–69, 
+0 if the average is lower than 60 */
+
+#include <stdio.h>
+
+int qualityPoints(int a);
+
+int main(void)
+{
+	int average;
+	printf("Please, enter average monthly income from 1 to 100: \n");
+	scanf_s("%d", &average);
+	printf("%d quality points! \n", qualityPoints(average));
+}
+int qualityPoints(int a) {
+	int q;
+	if (a >= 90)
+		q = 4;
+	else if (a >= 80)
+		q = 3;
+	else if (a >= 70)
+		q = 2;
+	else if (a >= 60)
+		q = 1;
+	else
+		q = 0;
+	return q;
+}
