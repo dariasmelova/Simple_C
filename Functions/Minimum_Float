@@ -1,0 +1,23 @@
+// a program that returns the smallest of three floating-point numbers
+
+#include <stdio.h>
+
+double minDouble(double number1, double number2, double number3);
+
+int main(void)
+{
+	double x, y, z;
+
+	printf("Please, enter three floating point numbers: \n");
+	scanf_s("%lf%lf%lf", &x, &y, &z);
+	printf("Minimum floating point number is %.2f \n", minDouble(x, y, z));
+}
+double minDouble(double number1, double number2, double number3) {
+	double min;
+	min = number1;
+	if (number2 < min)
+		min = number2;
+	if (number3 < min)
+		min = number3;
+	return min;
+}
