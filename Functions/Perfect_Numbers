@@ -1,0 +1,29 @@
+// a program that determines and prints all the perfect numbers between 1 and 1000
+
+#include <stdio.h>
+
+int perfect(int a);
+
+int main(void)
+{
+	int counter;
+
+	printf("List of perfect numbers between 1 and 1000: \n");
+
+	for (counter = 1; counter <= 1000; counter++) {
+		if (perfect(counter))
+			printf("%d\n", counter);
+	}
+
+}
+int perfect(int a) {
+	int counter, sum = 0;
+	for (counter = 1; counter <= (a - 1); counter++) {
+		if (a % counter == 0)
+			sum += counter;
+	}
+	if (sum == a)
+		return 1;
+	else
+		return 0;
+}
