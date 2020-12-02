@@ -1,0 +1,28 @@
+// a program with a function that returns the greatest common divisor of two integers
+
+#include <stdio.h>
+
+int gcd(int a, int b);
+
+int main(void)
+{
+	int x, y;
+
+	printf("Please, enter two integers: \n");
+	scanf_s("%d%d", &x, &y);
+	printf("The greatest common diviser is %d.\n", gcd(x, y));
+}
+int gcd(int a, int b) {
+	int counter;
+	if (a <= b) {
+		for (counter = a; counter >= 1; counter--) {
+			if (a % counter == 0 && b % counter == 0)
+				return counter;
+		}
+	}
+	else
+		for (counter = b; counter >= 1; counter--) {
+			if (a % counter == 0 && b % counter == 0)
+				return counter;
+		}
+}
