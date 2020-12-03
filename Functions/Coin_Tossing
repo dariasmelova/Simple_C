@@ -1,0 +1,42 @@
+// a program that simulates coin tossing
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int flip(void);
+
+int main(void)
+{
+	int frequency0 = 0;
+	int frequency1 = 0;
+	int counter;
+	int result;
+
+	for (counter = 1; counter <= 100; ++counter) {
+		printf("Toss # %d: ", counter);
+		result = flip();
+
+		switch (result) {
+
+		case 0:
+			printf("Heads!\n");
+			frequency0++;
+			break;
+
+		case 1:
+			printf("Tails!\n");
+			frequency1++;
+			break;
+
+		}
+	}
+
+	printf("Total heads: %d: ", frequency0);
+	printf("Total tails: %d: ", frequency1);
+}
+
+int flip(void) {
+	int coin;
+	coin = (rand() % 2);
+	return coin;
+}
