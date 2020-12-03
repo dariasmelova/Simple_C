@@ -1,0 +1,25 @@
+// a program with a recursive function that calculates x raised to power y
+
+#include <stdio.h>
+
+int power(int base, int exponent);
+
+int main(void)
+{
+	int x, y;
+
+	printf("Please, enter two positive integers: the base and the exponent: \n");
+	scanf_s("%d%d", &x, &y);
+
+	printf("%d raised to power %d is %d.\n", x, y, power(x, y));
+} 
+
+int power(int base, int exponent)
+{                                    
+	if (exponent == 1) {
+		return base;
+	}                                         
+	else {                            
+		return (base * power(base, (exponent - 1)));
+	}                                       
+} 
