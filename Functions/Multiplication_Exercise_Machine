@@ -1,0 +1,55 @@
+// a program that generates 5 arithmetic exercises with motivating feedback
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main(void)
+{
+	int counter;
+	int integer1;
+	int integer2;
+	int product;
+	int react;
+	for (counter = 1; counter <= 5; counter++) {
+		integer1 = rand() % 10;
+		integer2 = rand() % 10;
+		printf("How much is %d times %d?\n", integer1, integer2);
+		scanf_s("%d", &product);
+		while (product != integer1 * integer2) {
+			react = 1 + rand() % 4;
+			switch (react) {
+			case 1:
+				printf("Try again!\n");
+				break;
+			case 2:
+				printf("Please, try once more!\n");
+				break;
+			case 3:
+				printf("Don't give up!\n");
+				break;
+			case 4:
+				printf("No. Keep trying.\n");
+				break;
+			}
+
+			scanf_s("%d", &product);
+		}
+		react = 1 + rand() % 4;
+		switch (react) {
+		case 1:
+			printf("Very good!\n");
+			break;
+		case 2:
+			printf("Excellent!!\n");
+			break;
+		case 3:
+			printf("Nice work!\n");
+			break;
+		case 4:
+			printf("Keep up the good work!\n");
+			break;
+		}
+
+	}
+}
