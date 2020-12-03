@@ -1,0 +1,32 @@
+// a program that calculates the Nth Fibonacci number
+
+#include <stdio.h> 
+
+int fibonacci(int n); 
+
+int main(void)
+{
+	int x;
+
+	printf("Enter which one in the Fibonacci series you would like to know: \n");
+	scanf_s("%d", &x);
+
+	printf("The number you are looking for is %d", fibonacci(x));
+}
+
+int fibonacci(int n) {
+	int f2 = 0; // 2 positions before what we are looking for
+	int f1 = 1; // 1 position before what we are looking for (right before it)
+	int f; // what we are looking for
+	int counter;
+	if (n == 1)
+		return f2;
+	if (n == 2)
+		return f1;
+	for (counter = 3; counter <= n; counter++) {
+		f = f2 + f1;
+		f2 = f1;
+		f1 = f;
+	}
+	return f;
+}
