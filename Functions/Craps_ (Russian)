@@ -1,0 +1,197 @@
+// a prorgam that simulates the game of craps (in Russian language)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h> // contains prototype for function time
+
+// enumeration constants represent game status
+enum Status { CONTINUE, WON, LOST };
+
+int rollDice(void); // function prototype
+
+// function main begins program execution
+int main(void)
+{
+	system("chcp 1251>nul");
+	int bankbalance = 1000; // initial sum of money player has
+	int bet;
+	int sum; // sum of rolled dice
+	int myPoint; // player must make this point to win
+	int react; // variable for different comments while game is on
+	int seed; // variable for rolling dies
+	int ask = 777;
+
+	enum Status gameStatus; // can contain CONTINUE, WON, or LOST
+
+	printf("Приглашаем Вас сыграть в КРЕПС!\n"); // game discription
+	printf("В этой игре Вы бросаете 2 кости.\n"); // game discription
+	printf("Если в первом розыгрыше сумма равна 7 или 11, то Вы сразу выигрываете игру.\n"); // game discription
+	printf("Если же она равна 2,3 или 12, то выигрывает казино.\n"); // game discription
+	printf("В остальных случаях выброшенная Вами сумма костей становится ОЧКОМ.\n"); // game discription
+	printf("И тогда Вы продолжаете бросать кости, пока не выбросите ОЧКО и выиграете..\n"); // game discription
+	printf("Либо случайно выбросите 7 и проиграете.\n"); // game discription
+	printf("Игра также закончится, если у Вас закончатся деньги.\n"); // game discription
+	printf("Итак...\n...\n...\n...\n...\n"); // game discription
+
+	printf("Ваша мама дала Вам 1000$. Сделайте ставку!\n"); // ask the player to make a bet
+	scanf_s("%d", &bet);
+
+	while (bet > bankbalance) {
+		printf("Не хватает денег! Попробуйте снова.\n");
+		scanf_s("%d", &bet);
+	}
+
+	while (bankbalance > 0 && ask == 777) {
+		printf("Вы сделали ставку %d$.\n", bet);
+		printf("Чтобы бросить кости введите любое число на клавиатуре от 1 до 999.\n");
+		scanf_s("%d", &seed);
+		printf("ПЕРВЫЙ БРОСОК КОСТЕЙ....\n");
+		printf(".....\n.....\n......\n.....\n");
+
+		// randomize random number generator using current time
+		srand(seed);
+
+		sum = rollDice(); // first roll of the dice
+
+		// determine game status based on sum of dice
+		switch (sum) {
+
+			// win on first roll
+		case 7: // 7 is a winner
+		case 11: // 11 is a winner          
+			gameStatus = WON; // game has been won
+			bankbalance += bet;
+			printf("Поздравляем! Вы выиграли! Теперь у Вас %d$!\n", bankbalance);
+			break;
+
+			// lose on first roll
+		case 2: // 2 is a loser
+		case 3: // 3 is a loser
+		case 12: // 12 is a loser
+			gameStatus = LOST; // game has been lost
+			bankbalance -= bet;
+			printf("Какая неудача! Вы проиграли! У Вас осталось %d$!\n", bankbalance);
+			if (bankbalance == 0)
+				printf("Поскольку денег больше нет, игре конец. Извините! \n");
+			break;
+
+			// remember point
+		default:
+			gameStatus = CONTINUE; // player should keep rolling
+			myPoint = sum; // remember the point
+			printf("Теперь, чтобы выиграть, Вы должны выбросить ОЧКО %d. Но остерегайтесь семерки! Удачи!\n", myPoint);
+			break; // optional
+		} // end switch
+
+		// while game not complete
+		while (CONTINUE == gameStatus) { // player should keep rolling
+			printf("Чтобы бросить кости снова введите любое число на клавиатуре от 1 до 999.\n");
+			scanf_s("%d", &seed);
+			srand(seed);
+			printf("СЛЕДУЮЩИЙ БРОСОК КОСТЕЙ....\n");
+			printf(".....\n.....\n......\n.....\n");
+			printf("И тут, как всегда, открывается дверь и входит Ваша мама:\n");
+			react = 1 + rand() % 7;
+			switch (react) {
+			case 1:
+				printf("\"Всё играешь? Зрение испортишь!!\"\n");
+				break;
+			case 2:
+				printf("\"Не пора тебе фишки на деньги уже обменять?\"\n");
+				break;
+			case 3:
+				printf("\"Сынок, ты когда мне долг вернешь, ещё раз спрашиваю...\"\n");
+				break;
+			case 4:
+				printf("\"Я уже говорила, что ужин стынет?\"\n");
+				break;
+			case 5:
+				printf("\"У тебя тут проветрить пора!\"\n");
+				break;
+			case 6:
+				printf("\"Может, ты погуляешь с собакой наконец?\"\n");
+				break;
+			case 7:
+				printf("\"Звонила тётя Сара! Тебе привет от них с дядей Изей.\"\n");
+				break;
+			} // end swith
+			sum = rollDice(); // roll dice again
+
+			// determine game status
+			if (sum == myPoint) { // win by making point
+				gameStatus = WON; // game over, player won
+				bankbalance += bet;
+				printf("Ого!!! Бывает же такое! Вы выкинули %d!!! И выиграли! Теперь у Вас %d$!\n", myPoint, bankbalance);
+			} // end if
+			else {
+				if (7 == sum) { // lose by rolling 7
+					gameStatus = LOST; // game over, player lost
+					bankbalance -= bet;
+					printf("Не повезло... У Вас осталось %d$!\n", bankbalance);
+					if (bankbalance == 0)
+						printf("Так как деньги кончились, игре конец. Извините!\n");
+				} // end if
+			} // end else
+		} // end while
+
+		// display won or lost message
+		if (WON == gameStatus) { // did player win?
+			puts("ВЫИГРЫШ");
+		} // end if
+		else { // player lost
+			puts("ПРОИГРЫШ");
+		} // end else
+
+		if (bankbalance > 0) {
+			printf("Ещё разок сыграем или хватит? Нажмите 777, чтобы продолжить! Нажмите 000, чтобы завершить.\n");
+			scanf_s("%d", &ask);
+			switch (ask) {
+			case 777:
+				printf("Итак, какой будет Ваша следующая ставка? Может, рискнете по-крупному? Введите сумму ставки: \n");
+				scanf_s("%d", &bet);
+				while (bet > bankbalance) {
+					printf("Не хватает денег! Попробуйте снова.\n");
+					scanf_s("%d", &bet);
+				}
+				break;
+
+			case 000:
+				goto end;
+				break;
+
+			default:
+				while (ask != 777 && ask != 000) {
+					printf("Вы не поняли, надо ввести ЛИБО 777 ЛИБО 000! Попробуйте снова. \n");
+					scanf_s("%d", &ask);
+				}
+				if (ask == 777) {
+					printf("Итак, какой будет Ваша следующая ставка? Может, рискнете по-крупному? Введите сумму ставки: \n");
+					scanf_s("%d", &bet);
+					while (bet > bankbalance) {
+						printf("Не хватает денег! Попробуйте снова.\n");
+						scanf_s("%d", &bet);
+					}
+				}
+			}
+		}
+	}
+
+end:
+	printf("GAME OVER\n");
+
+}// end main
+
+// roll dice, calculate sum and display results
+int rollDice(void) {
+	int die1; // first die
+	int die2; // second die
+	int workSum; // sum of dice
+
+	die1 = 1 + (rand() % 6); // pick random die1 value
+	die2 = 1 + (rand() % 6); // pick random die2 value
+	workSum = die1 + die2; // sum die1 and die2
+
+	// display results of this roll
+	printf("Player rolled %d + %d = %d\n", die1, die2, workSum);
+	return workSum; // return sum of dice
+} // end function rollRice
