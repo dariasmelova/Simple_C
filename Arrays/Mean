@@ -1,0 +1,60 @@
+// a program that computes the mean (arithmetic average) of the data 
+
+#include <stdio.h>
+#define SIZE 100
+
+// function prototypes
+void mean(const unsigned int answer[]);
+void printArray(const unsigned int a[]);
+
+// function main begins program execution
+int main(void)
+{
+	unsigned int frequency[10] = { 0 }; // initialize array frequency
+
+	// initialize array response
+	unsigned int response[SIZE] =
+	{ 6, 7, 8, 9, 8, 7, 8, 9, 8, 9,
+	  7, 8, 9, 5, 9, 8, 7, 8, 7, 8,
+	  6, 7, 8, 9, 3, 9, 8, 7, 8, 7,
+	  7, 8, 7, 8, 9, 8, 9, 7, 8, 9,
+	  6, 7, 8, 7, 8, 7, 9, 8, 9, 2,
+	  7, 8, 7, 8, 9, 8, 9, 7, 5, 3,
+	  5, 6, 7, 2, 5, 3, 9, 4, 6, 4,
+	  7, 8, 7, 6, 8, 7, 8, 9, 7, 8,
+	  7, 4, 4, 2, 5, 3, 8, 7, 5, 6,
+	  4, 5, 6, 1, 6, 5, 7, 8, 7, 7 };
+
+	printArray(response);
+	mean(response);
+	
+} // end main
+
+void mean(const unsigned int answer[])
+{
+	size_t j; // counter for totaling array elements
+	unsigned int total = 0; // variable to hold sum of array elements
+
+	// total response values
+	for (j = 0; j < SIZE; ++j) {
+		total += answer[j];
+	} // end for
+
+	printf("\n\nThe mean value is: %u / %u = %.4f\n\n", total, SIZE, (double)total / SIZE);
+} // end function mean
+
+// output array contents (20 values per row)
+void printArray(const unsigned int a[])
+{
+	size_t j; // counter
+
+	// output array contents
+	for (j = 0; j < SIZE; ++j) {
+
+		if (j % 20 == 0) { // begin new line every 20 values
+			puts("");
+		} // end if
+
+		printf("%2u", a[j]);
+	} // end for
+} // end function printArray
