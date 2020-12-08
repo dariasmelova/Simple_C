@@ -1,0 +1,85 @@
+// a program that computes the mode (value that occurs most frequently) of the data
+
+#include <stdio.h>
+#define SIZE 100
+
+// function prototypes
+void mode(unsigned int freq[], const unsigned int answer[]);
+void printArray(const unsigned int a[]);
+
+// function main begins program execution
+int main(void)
+{
+	unsigned int frequency[10] = { 0 }; // initialize array frequency
+
+	// initialize array response
+	unsigned int response[SIZE] =
+	{ 6, 7, 8, 9, 8, 7, 8, 9, 8, 9,
+	  7, 8, 9, 5, 9, 8, 7, 8, 7, 8,
+	  6, 7, 8, 9, 3, 9, 8, 7, 8, 7,
+	  7, 8, 7, 8, 9, 8, 9, 7, 8, 9,
+	  6, 7, 8, 7, 8, 7, 9, 8, 9, 2,
+	  7, 8, 7, 8, 9, 8, 9, 7, 5, 3,
+	  5, 6, 7, 2, 5, 3, 9, 4, 6, 4,
+	  7, 8, 7, 6, 8, 7, 8, 9, 7, 8,
+	  7, 4, 4, 2, 5, 3, 8, 7, 5, 6,
+	  4, 5, 6, 1, 6, 5, 7, 8, 7, 7 };
+
+	printArray(response); 
+	mode(frequency, response);
+} // end main
+
+void mode(unsigned int freq[], const unsigned int answer[])
+{
+	size_t rating; // counter for accessing elements 1-9 of array freq
+	size_t j; // counter for summarizing elements 0-98 of array answer
+	unsigned int largest = 0; // represents largest frequency
+	unsigned int modeValue = 0; // represents most frequent response
+
+	// summarize frequencies
+	for (j = 0; j < SIZE; ++j) {
+		++freq[answer[j]];
+	} // end for
+
+	// output headers for result columns
+	printf("\n\n%s%11s\n\n", "Response", "Frequency");
+
+	// output results
+	for (rating = 1; rating <= 9; ++rating) {
+		printf("%8u%11u          ", rating, freq[rating]);
+
+		// keep track of mode value and largest frequency value
+		if (freq[rating] > largest) {
+			largest = freq[rating];
+		} // end if                                            
+
+		puts(""); // being new line of output
+	} // end outer for
+
+	// display the mode value
+	printf("The largest frequency is %d.\n", largest);
+	printf("\nValues most frequently occured:\n");
+	for (rating = 1; rating <= 9; ++rating) {
+
+		if (freq[rating] == largest) {
+			printf("%d\n", rating);
+		}
+	}
+
+} // end function mode
+
+// output array contents (20 values per row)
+void printArray(const unsigned int a[])
+{
+	size_t j; // counter
+
+	// output array contents
+	for (j = 0; j < SIZE; ++j) {
+
+		if (j % 20 == 0) { // begin new line every 20 values
+			puts("");
+		} // end if
+
+		printf("%2u", a[j]);
+	} // end for
+} // end function printArray
