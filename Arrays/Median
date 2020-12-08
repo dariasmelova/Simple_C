@@ -1,0 +1,95 @@
+// a program that computes the median (middle value) of the data
+
+#include <stdio.h>
+#define SIZE 100
+
+// function prototypes
+void median(unsigned int answer[]);
+void bubbleSort(unsigned int a[]);
+void printArray(const unsigned int a[]);
+
+// function main begins program execution
+int main(void)
+{
+	unsigned int frequency[10] = { 0 }; // initialize array frequency
+
+	// initialize array response
+	unsigned int response[SIZE] =
+	{ 6, 7, 8, 9, 8, 7, 8, 9, 8, 9,
+	  7, 8, 9, 5, 9, 8, 7, 8, 7, 8,
+	  6, 7, 8, 9, 3, 9, 8, 7, 8, 7,
+	  7, 8, 7, 8, 9, 8, 9, 7, 8, 9,
+	  6, 7, 8, 7, 8, 7, 9, 8, 9, 2,
+	  7, 8, 7, 8, 9, 8, 9, 7, 5, 3,
+	  5, 6, 7, 2, 5, 3, 9, 4, 6, 4,
+	  7, 8, 7, 6, 8, 7, 8, 9, 7, 8,
+	  7, 4, 4, 2, 5, 3, 8, 7, 5, 6,
+	  4, 5, 6, 1, 6, 5, 7, 8, 7, 7};
+
+	median(response);
+	} // end main
+
+// calculate average of all response values
+
+
+// sort array and determine median element's value
+void median(unsigned int answer[])
+{
+	printf("%s","The unsorted array is");
+
+	printArray(answer); // output unsorted array
+
+	bubbleSort(answer); // sort array
+
+	printf("%s", "\n\nThe sorted array is");
+	printArray(answer); // output sorted array
+
+	// display median element
+	if (SIZE % 2 != 0) { // if there are odd number of elements in the array, then the median is right in the middle
+		printf("\n\nThe median is %u\n\n", answer[SIZE / 2]);
+	}
+	else // if there are even number of elements in the array, then the median should be calculated
+		printf("\n\nThe median is %u\n\n", 
+			(answer[SIZE / 2] + answer[SIZE / 2 + 1]) / 2);
+} // end function median
+
+
+
+// function that sorts an array with bubble sort algorithm
+void bubbleSort(unsigned int a[])
+{
+	unsigned int pass; // pass counter
+	size_t j; // comparison counter
+	unsigned int hold; // temporary location used to swap elements
+
+	// loop to control number of passes
+	for (pass = 1; pass < SIZE; ++pass) {
+
+		// loop to control number of comparisons per pass
+		for (j = 0; j < SIZE - 1; ++j) {
+
+			// swap elements if out of order
+			if (a[j] > a[j + 1]) {
+				hold = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = hold;
+			} // end if
+		} // end inner for
+	} // end outer for
+} // end function bubbleSort
+
+// output array contents (20 values per row)
+void printArray(const unsigned int a[])
+{
+	size_t j; // counter
+
+	// output array contents
+	for (j = 0; j < SIZE; ++j) {
+
+		if (j % 20 == 0) { // begin new line every 20 values
+			puts("");
+		} // end if
+
+		printf("%2u", a[j]);
+	} // end for
+} // end function printArray
