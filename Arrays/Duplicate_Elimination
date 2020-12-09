@@ -1,0 +1,35 @@
+// a program that prints a number only if it’s not a duplicate of a number that already occured
+
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 20
+
+int duplicateSearch(int a[], int counter, int searchKey);
+
+int main(void)
+{
+	int a[SIZE] = { 0 }; 
+	int counter; 
+	int random; 
+
+	for (counter = 0; counter < SIZE; ++counter) { 
+		random = 1 + rand() % 10; 
+		if ((duplicateSearch(a, counter, random))) 
+			a[counter] = random; 
+	}                  
+
+	printf("Unique values among 20 random values:\n");
+	for (counter = 0; counter < SIZE; ++counter) { 
+		if (a[counter])
+			printf("%d ", a[counter]);
+	} 
+}
+int duplicateSearch(int a[], int counter, int searchKey) {
+	int j;
+	for (j = 0; j <= counter; j++) { 
+		if (a[j] == searchKey) { 
+			return 0; 
+		}
+	}
+	return 1; 
+}
