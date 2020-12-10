@@ -1,0 +1,29 @@
+//a program that simulates the rolling of two dice 36000 times
+
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 13
+
+int rollDie(void);
+
+int main(void)
+{
+	int sum;
+	int doubleRoll;
+	int frequency[SIZE] = { 0 };
+
+	for (doubleRoll = 1; doubleRoll <= 36000; ++doubleRoll) {
+		sum = rollDie() + rollDie();
+		++frequency[sum];
+	}
+	printf("Sum\tFrequency\n");
+	for (sum = 2; sum <= 12; sum++) {
+		printf("%d\t%d\n", sum, frequency[sum]);
+	}
+}
+
+int rollDie(void)
+{
+	int die = 1 + (rand() % 6);
+	return die;
+}
