@@ -1,0 +1,23 @@
+// a program that prints the elements of an array backwards
+
+#include <stdio.h>
+#define SIZE 10
+
+void backwards(const int b[], size_t startSubscript, size_t size);
+
+int main(void)
+{
+	int a[SIZE] = { 8, 3, 1, 2, 6, 0, 9, 7, 4, 5 }; 
+
+	puts("Answer is:");
+	backwards(a, 0, SIZE);
+	puts("");
+} 
+
+void backwards(const int b[], size_t startSubscript, size_t size)
+{
+	if (startSubscript < size) {
+		backwards(b, startSubscript + 1, size);
+		printf("%d  ", b[startSubscript]);
+	} 
+}
