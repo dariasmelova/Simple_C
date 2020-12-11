@@ -1,0 +1,29 @@
+// a program that search for prime integers using a method known as "The Sieve of Eratosthenes"
+
+#include <stdio.h>
+
+int main(void)
+{
+	int eratosfen[1000]; // to find all the prime integers between 1 and 999 we use a 1000-elements array
+	int i, j;
+
+	for (i = 0; i < 1000; ++i) {
+		eratosfen[i] = 1; 
+	}
+	for (i = 2; i < 1000; ++i) {
+		for (j = i + 1; j < 1000; ++j) {
+			if (eratosfen[j] == 1 && j % i == 0) { 
+				eratosfen[j] = 0; 
+			}
+		}
+	}
+	j = 0;
+	for (i = 1; i < 1000; ++i) {
+		if (eratosfen[i] == 1) {
+			printf("%4d ", i);
+			j++;
+			if (j % 10 == 0) 
+				puts("");
+		}
+	}
+}
