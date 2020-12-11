@@ -1,0 +1,38 @@
+// a program that performs linear search of the array recursively
+
+#include <stdio.h>
+#define SIZE 10
+
+int linearSearch(int array[], int size, int key);
+
+int main(void)
+{
+	int a[SIZE];
+	int x;
+	int key;
+	int result;
+	for (x = 0; x < SIZE; ++x) {
+		a[x] = 2 * x;
+		printf("%d ", a[x]);
+	}
+	puts("");
+	puts("Enter integer to search for:");
+	scanf_s("%d", &key);
+	result = linearSearch(a, SIZE, key);
+	if ((linearSearch(a, SIZE, key)) >= 0)
+	printf("Found value in element %d\n", linearSearch(a, SIZE, key));
+	else
+		puts("Value not found");
+}
+int linearSearch(int array[], int size, int key)
+{
+	if (array[size - 1] == key) {
+		return  size - 1;
+	}
+	else {
+		if (size >= 1)
+			linearSearch(array, size - 1, key);
+		else
+			return -1;
+	}
+}
