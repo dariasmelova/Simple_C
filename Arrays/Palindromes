@@ -1,0 +1,92 @@
+// a program that defines if a string stored in the array is a palindrome
+
+#include <stdio.h>
+
+int testPalindromeWord(char array[], int size);
+int testPalindromeSentence(char array[], int size);
+
+int main(void)
+{
+	char w[] = "radar";
+	puts(w);
+	if (testPalindromeWord(w, 6))
+		printf("is a palindrome\n\n");
+	else printf("is not a palindrome\n\n");
+
+	char w1[] = "bucket";
+	puts(w1);
+	if (testPalindromeWord(w1, 7))
+		printf("is a palindrome\n\n");
+	else printf("is not a palindrome\n\n");
+
+	char s[] = "a man a plan a canal panama";
+	puts(s);
+	if (testPalindromeSentence(s, 28))
+		printf("is a palidrome\n\n");
+	else printf("is not a palindrome\n\n");
+
+	char s1[] = "from Siberia with love";
+	puts(s1);
+	if (testPalindromeSentence(s1, 23))
+		printf("is a palidrome\n\n");
+	else printf("is not a palindrome\n\n");
+}
+int testPalindromeWord(char array[], int size)
+{
+	if (array[0] != array[size - 2])
+		return 0;
+	else
+	{
+		if (size > 2)
+			testPalindromeWord(&array[1], size - 2);
+		else return 1;
+	}
+}
+int testPalindromeSentence(char array[], int size)
+{
+	// case #1: both initial and last elements are not white space
+	if (array[0] != ' ' && array[size - 2] != ' ') {
+		if (array[0] != array[size - 2])
+			return 0;
+		else
+		{
+			if (size > 2)
+				testPalindromeSentence(&array[1], size - 2);
+			else return 1;
+		}
+	}
+	// case #2: initial element is white space (the array is then cut on the left side)	
+	if (array[0] == ' ' && array[size - 2] != ' ') {
+		if (array[1] != array[size - 2])
+			return 0;
+		else
+		{
+			if (size > 2)
+				testPalindromeSentence(&array[2], size - 2);
+			else return 1;
+		}
+	}
+	// case #3: last element is white space (the array is then cut on the right side)	
+	if (array[0] != ' ' && array[size - 2] == ' ') {
+		if (array[0] != array[size - 3])
+			return 0;
+		else
+		{
+			if (size > 2)
+				testPalindromeSentence(&array[1], size - 3);
+			else return 1;
+		}
+	}
+	// case #4: both initial and last elements are white space (the array is then cut on both sides)		
+	if (array[0] != ' ' && array[size - 2] == ' ') {
+		if (array[0] != array[size - 3])
+			return 0;
+		else
+		{
+			if (size > 2)
+				testPalindromeSentence(&array[2], size - 3);
+			else return 1;
+		}
+	}
+
+}
