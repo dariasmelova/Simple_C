@@ -1,0 +1,74 @@
+// a program that sorts the array in ascending order
+
+#include <stdio.h>
+#include<stdlib.h>
+#define SIZE 6
+
+void bucketSort(int arr[], int size); 
+
+int main(void) {
+	int k;
+
+	int a[SIZE] = { 70,42,97,100,16,3 }; 
+
+	puts("The unsorted array is:");
+	for (k = 0; k < SIZE; k++) {
+		printf("%d |", a[k]);
+	}
+
+	bucketSort(a, SIZE); 
+
+	puts("\nThe sorted array is:");
+	for (k = 0; k < SIZE; k++) {
+		printf("%d |", a[k]);
+	}
+
+}
+
+void bucketSort(int arr[], int size) {
+	int i, j, k;  
+
+    // Searching for the maximum element in the unsorted array:
+	int max = arr[0];
+	for (k = 0; k < size; k++) {
+		if (max < arr[k])
+			max = arr[k];
+	}
+
+	// How many digits?
+	int counter = 1; // 1 = 1 digit, 10 = 2 digits, 100 - 3 digits and so on
+	while (max > 9) {
+		max /= 10;
+		counter *= 10;
+	}
+
+	int b[10][SIZE] = { 0 }; // set to zero all the elements of a new double-subscripted 10-by-size array
+
+	int d = 10; 
+	while ((10 * counter) >= d) { 
+		// copy the original array to the new array
+		for (k = 0; k < size; k++) {
+			b[arr[k] % d / (d / 10)][k] = arr[k]; // e.g., put 97 to row #7 column #2, put 42 to row #2 column #1
+		} 
+		k = 0;
+		/* copy the new array back to the original array IN NEW ORDER, e.g. for the first pass: 70,100,42,3,16,97,
+		for the second pass 100, 03, 16, 42, 70, 97, for the third pass (the last one) 003, 016, 042, 070, 097, 100 */
+		for (i = 0; i < 10; i++) { // in each row
+			for (j = 0; j < size; j++) { // in each column
+				if (b[i][j]) { // if there is a non-zero value
+					arr[k] = b[i][j]; // copy this value to the original array
+					k++; 
+				}
+			}
+		}
+		for (i = 0; i < 10; i++) { // cleaning the double-subscripted array before the next iteration
+			for (j = 0; j < size; j++) {
+				if (b[i][j]) {
+					b[i][j] = 0;
+					k++;
+				}
+			}
+		}
+		d *= 10;
+	}
+}
