@@ -1,0 +1,46 @@
+// a program that prints the elements of the array in different ways
+
+#include <stdio.h>
+#define SIZE 10
+
+void RecursivePrintArray(int arr[], int size);
+void PrintArray(int arr[], int size, int index);
+void PrintArray1(int arr[], int size);
+
+int main(void)
+{
+	int a[SIZE] = { 302, 102, 400, 109, 10, 12, 11, 68, 23, 14 };
+	int i;
+	puts("Data items in original order with FOR");
+	for (i = 0; i < SIZE; ++i) {
+		printf("%d ", a[i]);
+	}
+	puts("");
+	puts("Data items in backwards order with recursive function");
+	RecursivePrintArray(a, SIZE);
+	puts("");
+	puts("Data items in original order with recursive function with index");
+	PrintArray(a, SIZE, 0);
+	puts("");
+	puts("Data items in original order with recursive function 1 without index");
+	PrintArray1(a, SIZE);
+}
+
+void RecursivePrintArray(int arr[], int size) {
+	if (size >= 1) {
+		printf("%d ", arr[size - 1]);
+		RecursivePrintArray(arr, size - 1);
+	}
+}
+void PrintArray(int arr[], int size, int index) {
+	if (index < size) {
+		printf("%d ", arr[index]);
+		PrintArray(arr, size, index + 1);
+	}
+}
+void PrintArray1(int arr[], int size) {
+	if (size > 0) {
+		printf("%d ", arr[SIZE - size]);
+		PrintArray1(arr, size - 1);
+	}
+}
