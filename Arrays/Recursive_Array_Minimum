@@ -1,0 +1,78 @@
+// a program that includes a recursive function which returns the minimum element of the array (in three different ways)
+
+#include <stdio.h>
+#define SIZE 10
+
+int recursiveMin1(int arr[], int size); // function prototype for the first way
+int recursiveMin2(int arr[], int size); // the second
+int recursiveMin3(int arr[], int size); // the third
+
+
+int main(void)
+{
+	int a[SIZE] = { 302, 102, 400, 109, 10, 12, 11, 68, 23, 14 };
+	int i;
+	puts("Data items:");
+	for (i = 0; i < SIZE; ++i) {
+		printf("%4d", a[i]);
+	}
+	puts("");
+	printf("FIRST WAY: Minimal value is %d", recursiveMin1(a, SIZE));
+	puts("\nData items:");
+	for (i = 0; i < SIZE; ++i) {
+		printf("%4d", a[i]);
+	}
+	puts("");
+	printf("SECOND WAY: Minimal value is %d", recursiveMin2(a, SIZE));
+	puts("\nData items:");
+	for (i = 0; i < SIZE; ++i) {
+		printf("%4d", a[i]);
+	}
+	puts("");
+	printf("THIRD WAY: Minimal value is %d", recursiveMin3(a, SIZE));
+	puts("\nData items:");
+	for (i = 0; i < SIZE; ++i) {
+		printf("%4d", a[i]);
+	}
+	puts("");
+}
+
+// finds the minimum recursively
+int  recursiveMin1(int arr[], int size) {
+	static int min;
+	if (size > 0) {
+		if (size == SIZE) {
+			min = arr[size - 1];
+		}
+		else {
+			if (arr[size - 1] < min)
+				min = arr[size - 1];
+		}
+		recursiveMin1(arr, size - 1);
+	}
+	else return min;
+}
+
+// finds the minimum recursively and drag it to the beggining of the array
+int  recursiveMin2(int arr[], int size) { 
+	int hold;
+	if (size > 0) {
+		if (arr[size - 2] > arr[size - 1]) {
+			hold = arr[size - 2];
+			arr[size - 2] = arr[size - 1];
+			arr[size - 1] = hold;
+		}
+		recursiveMin2(arr, size - 1);
+	}
+	else return arr[0];
+}
+
+// replace all elements to the left of the minimum element with its value
+int  recursiveMin3(int arr[], int size) { 
+	if (size > 0) {
+		if (arr[size - 2] > arr[size - 1])
+			arr[size - 2] = arr[size - 1];
+		recursiveMin3(arr, size - 1);
+	}
+	else return arr[0];
+}
