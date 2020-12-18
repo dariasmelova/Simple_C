@@ -1,0 +1,28 @@
+// a program that prints a string backwards with the help of a recursive function
+#include <stdio.h>
+
+void RecursivePrintString(char arr[], int i);
+
+int main(void)
+{
+	int i;
+	char string1[100];
+	puts("Enter any word:");
+	scanf_s("%s", string1, 100);
+	printf("You entered word \"%s\"\n", string1);
+	puts("Once more symbol by symbol:");
+	for (i = 0; string1[i] != '\0'; i++) {
+		printf("%c ", string1[i]);
+	}
+	puts("");
+	printf("Number of symbols equals %d", i);
+	puts("");
+	puts("Printing in backwards order with recursive function:");
+	RecursivePrintString(string1, i);
+}
+void RecursivePrintString(char arr[], int i) {
+	if (i >= 0) {
+		printf("%c", arr[i]);
+		RecursivePrintString(arr, i - 1);
+	}
+}
