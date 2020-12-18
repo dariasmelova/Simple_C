@@ -1,0 +1,42 @@
+// a program that performs binary search of the array recursively
+
+#include <stdio.h>
+#define SIZE 10
+
+int binarySearch(int b[], int key, int low, int high);
+
+int main(void)
+{
+	int a[SIZE];
+	int i;
+	for (i = 0; i < SIZE; ++i) {
+		a[i] = 2 * i;
+		printf("%d ", a[i]);
+	}
+	puts("");
+
+	int key;
+	printf("%s", "Enter a number between 0 and 18: ");
+	scanf_s("%d", &key);
+
+	if ((binarySearch(a, key, 0, SIZE - 1)) >= 0)
+		printf("\n%d found in array element %d\n", key, binarySearch(a, key, 0, SIZE - 1));
+	else {
+		printf("\n%d not found\n", key);
+	}
+}
+
+int binarySearch(int b[], int key, int low, int high)
+{
+	if (b[(low + high) / 2] == key)
+		return (low + high) / 2;
+	else {
+		if (low <= high) {
+			if (key > b[(low + high) / 2])
+				binarySearch(b, key, (low + high) / 2 + 1, high);
+			else
+				binarySearch(b, key, low, (low + high) / 2 - 1);
+		}
+		else return -1;
+	}
+}
