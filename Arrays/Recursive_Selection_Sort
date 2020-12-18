@@ -1,0 +1,81 @@
+// a program that sorts the array in descending/ascending order recursively
+// Double recursion
+
+#include <stdio.h>
+#define SIZE 10
+void SelectionSortD(int arr[], int size); // descending 
+void SelectionSortA(int arr[], int size); // ascending 
+
+int main(void)
+{
+	int a[SIZE] = { 302, 102, 400, 109, 10, 12, 11, 68, 23, 14 }; 
+	int i;
+	puts("Data items in original order"); 
+	for (i = 0; i < SIZE; ++i) {
+		printf("%4d", a[i]);
+	}
+
+	puts(""); 
+
+	SelectionSortD(a, SIZE); 
+	puts("\nData items in descending order"); 
+	for (i = 0; i < SIZE; ++i) {
+		printf("%4d", a[i]);
+	}
+
+	puts(""); 
+
+
+	SelectionSortA(a, SIZE); 
+	puts("\nData items in ascending order"); 
+	for (i = 0; i < SIZE; ++i) {
+		printf("%4d", a[i]);
+	}
+
+	puts(""); 
+
+} // end main
+
+int  recursiveMin(int arr[], int size); // prototype of function which finds minimum value 
+int  recursiveMax(int arr[], int size);// prototype of function which finds maximum value
+
+void SelectionSortD(int arr[], int size) { 
+	int min;
+	if (size > 1) { 
+		min = recursiveMin(arr, size); // find minimum
+		arr[0] = arr[size - 1]; // swap the first element (minimum) with the last element
+		arr[size - 1] = min; // now the last element is the minimum
+		SelectionSortD(arr, size - 1); // repeat without the last element
+	}
+}
+void SelectionSortA(int arr[], int size) { 
+
+	if (size > 1) {
+		recursiveMax(arr, size); // find maximum, put it in the end of the array
+		SelectionSortA(arr, size - 1); // repeat without the last (maximum) element
+	}
+}
+int  recursiveMin(int arr[], int size) { 
+	int hold;
+	if (size > 0) { 
+		if (arr[size - 2] > arr[size - 1]) { // drag the smaller element to the left if needed
+			hold = arr[size - 2];
+			arr[size - 2] = arr[size - 1];
+			arr[size - 1] = hold;
+		}
+		recursiveMin(arr, size - 1); // repeat without the last element, which is not the smallest for sure
+	}
+	else return arr[0]; // returns the first element which is the smallest
+}
+int recursiveMax(int arr[], int size) { 
+	int hold;
+	if (size > 1) {
+		if (arr[1] < arr[0]) { // drag the bigger element to the right
+			hold = arr[0];
+			arr[0] = arr[1];
+			arr[1] = hold;
+		}
+		recursiveMax(&arr[1], size - 1); // repeat without the first element, which is not the biggest for sure
+	}
+	return arr[size - 1]; // returns the last element which is the biggest
+}
