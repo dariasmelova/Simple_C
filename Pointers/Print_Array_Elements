@@ -1,0 +1,41 @@
+// a program, that demonstrates 4 ways of printing array elements
+
+#include <stdio.h>
+#define ARRAY_SIZE 4
+
+int main(void)
+{
+	int b[] = { 10, 20, 30, 40 }; 
+	int* bPtr = b; 
+	size_t i; 
+	size_t offset; 
+
+	// 1. using array subscript notation
+	puts("Array b printed with:\nArray subscript notation");
+
+	for (i = 0; i < ARRAY_SIZE; ++i) {
+		printf("b[ %u ] = %d\n", i, b[i]);
+	} 
+
+	// 2. using array name and pointer/offset notation
+	puts("\nPointer/offset notation where\n"
+		"the pointer is the array name");
+
+	for (offset = 0; offset < ARRAY_SIZE; ++offset) {
+		printf("*( b + %u ) = %d\n", offset, *(b + offset));
+	} 
+
+	// 3. using bPtr and array subscript notation
+	puts("\nPointer subscript notation");
+
+	for (i = 0; i < ARRAY_SIZE; ++i) {
+		printf("bPtr[ %u ] = %d\n", i, bPtr[i]);
+	} 
+
+	// 4. using bPtr and pointer/offset notation
+	puts("\nPointer/offset notation");
+
+	for (offset = 0; offset < ARRAY_SIZE; ++offset) {
+		printf("*( bPtr + %u ) = %d\n", offset, *(bPtr + offset));
+	} 
+} 
