@@ -1,0 +1,34 @@
+// a program that outputs a line of text in uppercase letters and in lowercase letters
+
+#include <stdio.h>
+#include <ctype.h>
+
+int main(void)
+{
+	char s[100];
+
+	printf("Please, enter a line of text: ");
+	fgets(s, 100, stdin); // function fgets inputs the line of text into the array
+
+	char* sPtr = s;
+	printf("%s%s", "You entered: ", s);
+
+	printf("Your text in uppercase letters: \n");
+	while (*sPtr != '\0') {
+		if (islower(*sPtr))
+			printf("%c", toupper(*sPtr));
+		else
+			printf("%c", *sPtr);
+		sPtr++;
+	} // end while
+
+	sPtr = s;
+	printf("Your text in lowercase letters: \n");
+	while (*sPtr != '\0') {
+		if (isupper(*sPtr))
+			printf("%c", tolower(*sPtr));
+		else
+			printf("%c", *sPtr);
+		sPtr++;
+	} // end while
+}
