@@ -1,0 +1,30 @@
+/* a program that inputs four strings that represent integers, converts the strings to integers, 
+sums the valuesand prints the total of the four values */
+
+#include <stdio.h>
+#include <ctype.h>
+
+int main(void)
+{
+	char a[100];
+	char b[100];
+	char c[100];
+	char d[100];
+
+	printf("Enter any integer: \n");
+	fgets(a, 100, stdin);
+	printf("Enter any integer: \n");
+	fgets(b, 100, stdin);
+	printf("Enter any integer: \n");
+	fgets(c, 100, stdin);
+	printf("Enter any integer: \n");
+	fgets(d, 100, stdin);
+
+	printf("You entered the following integers:\n");
+	printf("The first integer: %ld\n", atol(a));
+	printf("The second integer: %ld\n", atol(b));
+	printf("The third integer: %ld\n", atol(c));
+	printf("The forth integer: %ld\n", atol(d));
+
+	printf("The sum of the integers is %ld.\n", atol(a) + atol(b) + atol(c) + atol(d));
+}
