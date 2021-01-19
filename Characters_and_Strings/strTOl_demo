@@ -1,0 +1,22 @@
+// a program that demonstrates function strtol
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+	const char* string = "-1234567abc"; 
+
+	long x; 
+	char* remainderPtr;
+	 
+	x = strtol(string, &remainderPtr, 0); 
+	// 0 indicates that the value to be converted can be in octal(base 8), decimal(base 10) or hexadecimal (base 16) format
+
+	printf("%s\"%s\"\n%s%ld\n%s\"%s\"\n%s%ld\n",
+		"The original string is ", string,
+		"The converted value is ", x,
+		"The remainder of the original string is ",
+		remainderPtr,
+		"The converted value plus 567 is ", x + 567);
+}
