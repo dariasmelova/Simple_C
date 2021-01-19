@@ -1,0 +1,28 @@
+/* program that inputs four strings that represent floating-point values, converts the strings to double values,
+sums the values and prints the total of the four values */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+
+char a[100];
+char b[100];
+char c[100];
+char d[100];
+
+printf("Enter 4 floating-point values: \n");
+fgets(a, 100, stdin);
+fgets(b, 100, stdin);
+fgets(c, 100, stdin);
+fgets(d, 100, stdin);
+
+printf("You entered:\n");
+printf("The first value: %lf\n", atof(a));
+printf("The second value: %lf\n", atof(b));
+printf("The third value: %lf\n", atof(c));
+printf("The forth value: %lf\n", atof(d));
+
+printf("The sum of the four values is %lf.\n", atof(a) + atof(b) + atof(c) + atof(d));
+}
