@@ -1,0 +1,34 @@
+// a program that demonstrates functions fgets and putchar
+
+#include <stdio.h>
+#define SIZE 80
+
+void reverse(const char* const sPtr);
+
+int main(void)
+{
+	char sentence[SIZE]; 
+
+	puts("Enter a line of text:");
+
+	// use fgets to read line of text   
+	// The maximum number of characters is one fewer than the value specified in fgets’s second argument
+	// The third argument specifies the stream from which to read characters—in this case -the standard input stream
+	fgets(sentence, SIZE, stdin);
+
+	puts("\nThe line printed backwards is:");
+	reverse(sentence);
+} 
+
+// recursively outputs characters in string in reverse order
+void reverse(const char* const sPtr)
+{
+	// if end of the string
+	if ('\0' == sPtr[0]) { 
+		return;
+	} 
+	else { 
+		reverse(&sPtr[1]);                  
+		putchar(sPtr[0]); // use putchar to display character
+	} 
+} 
