@@ -1,0 +1,19 @@
+// a program that demonstrates function sprintf
+
+#include <stdio.h>
+#define SIZE 80
+
+int main(void)
+{
+	char s[SIZE]; 
+	int x; 
+	double y; 
+
+	puts("Enter an integer and a double:");
+	scanf_s("%d%lf", &x, &y);
+
+	sprintf_s(s, SIZE, "integer:%6d\ndouble:%8.2f", x, y);
+
+	printf("%s\n%s\n",
+		"The formatted output stored in array s is:", s);
+}
