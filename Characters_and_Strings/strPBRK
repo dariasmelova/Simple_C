@@ -1,0 +1,15 @@
+// a program that demonstrates function strpbrk
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	const char* string1 = "The string where we are looking for the first appearance of any character from the kit"; 
+	const char* string2 = "character_kit"; 
+
+	printf("%s\"%s\"\n'%c'%s\n\"%s\"\n",
+		"Of the characters in ", string2,
+		*strpbrk(string1, string2), 
+		" appears earliest in ", string1);
+}
