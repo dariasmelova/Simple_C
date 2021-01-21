@@ -1,0 +1,31 @@
+// a program that demonstrates function strchr
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	const char* string = "apple baby cat"; 
+	char character1 = 'a'; 
+	char character2 = 'c'; 
+
+	printf("The original string is \"%s\"", string);
+	printf("\n\nWhat we are looking for is character \'%c\'", character1);
+
+	// if character1 was found in string
+	if (strchr(string, character1) != NULL) {
+		printf("\n\'%c\' was found in \"%s\".\n",
+			character1, string);
+	} 
+	else { // if character1 was not found
+		printf("\n\'%c\' was not found in \"%s\".\n",
+			character1, string);
+	} 
+
+	printf("\n\n\nWhat we are NEXT looking for is character \'%c\'", character2);
+
+	// print a piece of the string starting with character2
+	
+		printf("\nA piece of the original string, starting with the character \'%c\', is \"%s\".\n",
+			character2, strchr(string, character2));
+	} 
