@@ -1,0 +1,16 @@
+// a program that demonstrates function strspn
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	const char* string1 = "The enemy is fear";
+	const char* string2 = "ymen hT";
+
+	printf("%s%s\n%s%s\n\n%s\n%s%u\n",
+		"string1 = ", string1, "string2 = ", string2,
+		"The length of the initial segment of string1",
+		"containing ONLY characters from string2 = ",
+		strspn(string1, string2));
+}
