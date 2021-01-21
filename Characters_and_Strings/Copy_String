@@ -1,0 +1,23 @@
+// a program that demonstrates functions strcpy and strncpy
+
+#include <stdio.h>
+#include <string.h>
+#define SIZE1 25
+#define SIZE2 15
+
+int main(void)
+{
+	char x[] = "Happy Birthday to You"; // a string with 21 characters (plus character #22 - null)
+	char y[SIZE1]; // empty array, where you can copy the whole x-string
+	char z[SIZE2]; // empty array, where you can copy only the first 14 characters, then add a null as #15
+	strcpy_s(y, SIZE1, x); // copy contents of x into y
+	printf("%s%s\n%s%s\n",
+		"The string in array x is: ", x,
+		"The string in array y is: ", y);
+
+	// copy first 14 characters of x into z. Does not copy null                                                
+	strncpy_s(z, SIZE2, x, SIZE2 - 1); 
+
+	z[SIZE2 - 1] = '\0'; // terminate string in z          
+	printf("The string in array z is: %s\n", z);
+}
