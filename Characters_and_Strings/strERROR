@@ -1,0 +1,15 @@
+// a program, that demonstrates function strerror
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	char buff [256];
+	int i;
+
+	for (i = 0; i <= 45; i++) {
+		strerror_s(buff, 100, i);
+		printf("%s\n", buff);
+	}
+}
