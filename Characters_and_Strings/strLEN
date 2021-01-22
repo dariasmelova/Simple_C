@@ -1,0 +1,16 @@
+// a program that demonstrates function strlen
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    const char* string1 = "abcdefghijklmnopqrstuvwxyz";
+    const char* string2 = "FOUR";
+    const char* string3 = "Saint-Petersburg";
+
+    printf("%s\"%s\"%s%u\n%s\"%s\"%s%u\n%s\"%s\"%s%u\n",
+        "The length of ", string1, " is ", strlen(string1),
+        "The length of ", string2, " is ", strlen(string2),
+        "The length of ", string3, " is ", strlen(string3));
+}
