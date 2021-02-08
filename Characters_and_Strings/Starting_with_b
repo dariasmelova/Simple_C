@@ -1,0 +1,26 @@
+// a program reads a series of strings and prints only those beginning with the letter "b"
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	char word [80];
+	const char* letter = "b";
+	int counter;
+	int counter1 = 0;
+
+	puts("Enter 5 words and I will print only those beginning with the letter \"b\"");
+
+	for (counter = 0; counter < 5; counter++) {
+		puts("Enter any word:");
+		fgets(word, 80, stdin);
+
+		if (strncmp(word, letter, 1) == 0) {
+			puts(word);
+			counter1++;
+		}
+	}
+	if (counter1 == 0)
+		printf("%s", "None of the words you entered starts with the letter \"b\"");
+}
