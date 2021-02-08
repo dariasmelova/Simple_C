@@ -1,0 +1,47 @@
+// a program that inputs a digit and prints the corresponding ASCII code 
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+	int digit;
+
+	printf("Enter a digit from 0 to 9: \n");
+	scanf_s("%d", &digit);
+
+	printf("The  corresponding ASCII code is ");
+	
+	switch(digit) {
+	case 0:
+		puts("48");
+		break;
+	case 1:
+		puts("49");
+		break;
+	case 2:
+		puts("50");
+		break;
+	case 3:
+		puts("51");
+		break;
+	case 4:
+		puts("52");
+		break;
+	case 5:
+		puts("53");
+		break;
+	case 6:
+		puts("54");
+		break;
+	case 7:
+		puts("55");
+		break;
+	case 8:
+		puts("56");
+		break;
+	case 9:
+		puts("57");
+		break;
+	}
+}
