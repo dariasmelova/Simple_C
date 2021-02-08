@@ -1,0 +1,29 @@
+// a program that uses random number generation to create sentences
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+int main()
+{
+	const char* article[100] = { "a", "the", "one", "some", "any" }; // articles
+	const char* noun[100] = { " boy", " girl", " town", " car" }; // nouns
+	const char* verb[100] = { " drove", " jumped", " ran", " skipped", " walked" }; // verbs
+	const char* preposition[100] = { " to ", " from ", " over ", " on " }; // prepositions
+
+	char sentence[1000]; 
+
+	int counter;
+
+	for (counter = 1; counter <= 5; counter++) {
+		sscanf_s (article[rand() % 4], "%s", sentence);
+		strcat_s(sentence, 1000, noun[rand() % 3]);
+		strcat_s(sentence, 1000, verb[rand() % 4]);
+		strcat_s(sentence, 1000, preposition[rand() % 3]);
+		strcat_s(sentence, 1000, article[rand() % 4]);
+		strcat_s(sentence, 1000, noun[rand() % 3]);
+		sentence[0] = toupper(sentence[0]);
+		printf("\"%s.\"\n", sentence);
+	}
+}
