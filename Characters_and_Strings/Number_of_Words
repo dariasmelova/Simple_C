@@ -1,0 +1,27 @@
+// a program that inputs several lines of text and uses strtok to count the total number of words
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	char sentence[1000];
+	char* tokenPtr;
+	char* remainderPtr;
+	int counter;
+	int words=0;
+
+	puts("Enter 5 sentences and I will count the total number of words in each of them.");
+
+	for (counter = 0; counter < 5; counter++) {
+		puts("Enter a sentence:");
+		fgets(sentence, 1000, stdin);
+		tokenPtr = strtok_s(sentence, " ", &remainderPtr);
+		while (tokenPtr != NULL) {
+			tokenPtr = strtok_s(NULL, " ", &remainderPtr);
+			words++;
+		}
+	printf("%s%d\n", "The number of words in this sentence is ", words);
+	words = 0;
+	}
+}
