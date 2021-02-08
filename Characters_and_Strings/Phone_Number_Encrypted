@@ -1,0 +1,32 @@
+// a program that encrypts a telephone number
+
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(void)
+{
+	printf("Please, enter your phone number like this: \"(921) 350-7373\":\n");
+	char s[100];
+	fgets(s, 100, stdin);
+	printf("%s%s", "You entered ", s);
+
+	char* sPtr;
+	char* RemainderPtr;
+	sPtr = strtok_s(s, "() -", &RemainderPtr);
+	int code;
+	code = atoi(sPtr);
+	printf("Operator code is %d\n", code);
+	printf("Encrypted operator code is %d\n", 2 * code - 1000);
+
+	sPtr = strtok_s(NULL, "-", &RemainderPtr);
+	char phoneNumber[10];
+	sprintf_s (phoneNumber, 10, "%s", sPtr);
+	sPtr = strtok_s(NULL, "-", &RemainderPtr);
+	strcat_s(phoneNumber, 10, sPtr);
+	long phoneNumberD;
+	phoneNumberD = atol(phoneNumber);
+	printf("Phone number is %ld\n", phoneNumberD);
+	printf("Encrypted phone number is %ld", 2 * phoneNumberD - 1000);
+}
