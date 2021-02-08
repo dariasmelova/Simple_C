@@ -1,0 +1,30 @@
+// a program that reads a series of strings and prints only those that end with the letters "ed"
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	char word[80];
+	const char* ending = "ed";
+	char* remainder;
+	int counter;
+	int counter1 = 0;
+
+	puts("Enter 5 words and I will print only those ending with the letters \"ed\"");
+
+	for (counter = 0; counter < 5; counter++) {
+		puts("Enter any word:");
+		fgets(word, 80, stdin);
+
+		if (strstr(word, ending) != NULL) {
+			remainder = strstr(word, ending);
+			if ((memcmp(remainder,ending,2)) == 0) {
+            puts(word);
+			counter1++;
+			}
+		}
+	}
+	if (counter1 == 0)
+		printf("%s", "None of the words you entered ends with the letters \"ed\"");
+}
