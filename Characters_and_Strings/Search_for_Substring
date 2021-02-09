@@ -1,0 +1,18 @@
+// a program that searches for a substring
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	const char* string = "new year new month new week new day new hour new minute";
+	const char* substring = "new";
+	char* searchPtr;
+
+	searchPtr = strstr(string, substring);
+
+	while (searchPtr != NULL) {
+		puts(searchPtr);
+		searchPtr = strstr(searchPtr+1, substring);
+	}	
+}
