@@ -1,0 +1,30 @@
+// a program that displays a sentence with its words reversed
+
+#include <stdio.h>
+#include <string.h>
+
+void reverse(char* sentence);
+
+int main(void)
+{
+	char string[100]; 
+	
+	printf("Please, enter a sentence:\n");
+	fgets(string, 100, stdin);
+
+	reverse(string);
+}
+
+void reverse(char* sentence) {
+	char* tokenPtr;
+	char* remainderPtr;
+
+	tokenPtr = strtok_s(sentence, " ,\n", &remainderPtr);
+
+	if (tokenPtr == NULL)
+		return;
+	else {
+		reverse(remainderPtr);
+		printf_s("%s ", tokenPtr);
+	}
+}
