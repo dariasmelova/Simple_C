@@ -1,0 +1,23 @@
+// a program that counts how many times the substring occurs in a string
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	char string [] = "a black cat in the black street in the black city";
+	char substring [] ="black";
+	char* searchPtr;
+	int counter=0;
+	
+	printf_s("%s\"%s\"\n", "The sentence is ", string);
+	printf_s("%s\"%s\"\n", "This program is looking for the word ", substring);
+
+	searchPtr = strstr(string, substring);
+	
+    while (searchPtr != NULL) {
+			counter++;
+			searchPtr = strstr(searchPtr + 1, substring);
+		}
+		printf_s("\"%s\"%s%d%s\n",  substring, " occured ", counter, " times in this sentence");
+}
