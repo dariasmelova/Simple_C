@@ -1,0 +1,45 @@
+// a program that inputs a line of text and determines the total occurrences of each letter of the alphabet in the line
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	char string[1000];
+	char character;
+	char* searchPtr;
+	char lowercase[] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+		'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+	int counters[26] = { 0 };
+	int i;
+	
+	puts("Please, enter a sentence.");
+	fgets(string, 1000, stdin);
+	
+	for (i = 0; i <= 25; i++) {
+		
+		character = lowercase[i];
+		searchPtr = strchr(string, character);
+		if (strchr(string, character)) {
+            while (searchPtr != NULL) {
+			counters[i]++;
+			searchPtr = strchr(searchPtr + 1, character);
+		    }
+		}
+			
+		character = toupper(lowercase[i]);
+		searchPtr = strchr(string, character);
+		if (strchr(string, character)) {
+			while (searchPtr != NULL) {
+				counters[i]++;
+				searchPtr = strchr(searchPtr + 1, character);
+			}
+		}
+	}
+
+	printf_s("%7s%12s\n", "Letters", "How many");
+	for (i = 0; i <= 25; i++) {
+		if (counters[i])
+			printf_s("%3c%3c%9d\n", toupper(lowercase[i]), lowercase[i],counters[i]);
+	}
+}
