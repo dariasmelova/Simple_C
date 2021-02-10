@@ -1,0 +1,30 @@
+// a program that searches for a character
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	char string[1000];
+	char character;
+	char* searchPtr;
+	int counter = 0;
+
+	puts("Please, enter a sentence.");
+	fgets(string, 1000, stdin);
+
+	puts("Please, enter a character.");
+	character=getchar();
+
+	searchPtr = strchr(string, character);
+
+	if (searchPtr == NULL)
+		puts("This character did not occur in this sentence");
+	else {
+		while (searchPtr != NULL) {
+			counter++;
+			searchPtr = strchr(searchPtr+1, character);
+		}
+		printf_s("%s%d%s", "The character occured ", counter, " times in this sentence");
+	}
+}
