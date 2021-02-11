@@ -1,0 +1,22 @@
+//a program that reads the three strings suzy, "suzy" and 'suzy'
+
+#include <stdio.h>
+
+int main(void)
+{
+	char word1[100];
+	char word2[100];
+	char word3[100];
+
+	printf("Enter suzy: ");
+	scanf_s("%s", word1, 100);
+	printf("You entered with no quotes: %s\n", word1);
+
+	printf("Now, enter \'suzy\': ");
+	scanf_s("%s", word2, 100);
+	printf("You entered with single quotes: %s\n", word2);
+
+	printf("This time, enter \"suzy\": ");
+	scanf_s("%s", word3, 100);
+	printf("You entered with double quotes: %s\n", word3);
+}
