@@ -1,0 +1,19 @@
+// a program that demonstrates different conversion specifiers being used to print a pointer variable
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+
+	int b;
+	int* Ptr = &b;
+
+	printf("%d\n", Ptr);
+	printf("%ld\n", Ptr);
+	printf("%hd\n", Ptr);
+	printf("%i\n", Ptr);
+	printf("%u\n", Ptr);
+	printf("%o\n", Ptr);
+	printf("%x\n", Ptr);
+	printf("%p\n", Ptr);
+}
