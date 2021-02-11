@@ -1,0 +1,15 @@
+/* program that prints the value 100.453627
+rounded to the nearest digit, tenth, hundredth, thousandth and ten - thousandth */
+
+#include <stdio.h>
+
+int main(void) {
+
+	float c = 100.453627;
+
+	printf("%.0f\n", c); // to the nearest digit
+	printf("%.1f\n", c); // tenth
+	printf("%.2f\n", c); // hundredth
+	printf("%.3f\n", c); // thousandth
+	printf("%.4f\n", c); // ten - thousandth
+}
