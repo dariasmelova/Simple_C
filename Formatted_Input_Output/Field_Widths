@@ -1,0 +1,33 @@
+/* a program that tests the results of printing the integer value 12345 and the floating - point value 1.2345
+in various size fields */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+
+	int b = 12345;
+	float c = 1.2345;
+
+	printf("%d\n", b);
+	printf("%1d\n", b);
+	printf("%2d\n", b);
+	printf("%3d\n", b);
+	printf("%4d\n", b);
+	printf("%5d\n", b);
+	printf("%6d\n", b);
+	printf("%7d\n", b);
+	printf("%8d\n", b);
+	printf("%9d\n", b);
+
+	printf("%f\n", c);
+	printf("%1f\n", c);
+	printf("%2f\n", c);
+	printf("%3f\n", c);
+	printf("%4f\n", c);
+	printf("%5f\n", c);
+	printf("%6f\n", c);
+	printf("%7f\n", c);
+	printf("%8f\n", c);
+	printf("%9f\n", c);
+}
