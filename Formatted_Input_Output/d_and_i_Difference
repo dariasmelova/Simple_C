@@ -1,0 +1,15 @@
+// a program that demonstrates the difference between the %d and% i conversion specifiers when used in scanf statements
+// test integers are:
+// 10 and 10
+// -10 and -10
+// 010 and 010
+// 0x10 and 0x10
+
+#include <stdio.h>
+
+int main(void) {
+	int x, y;
+	printf("Enter two integers: ");
+	scanf_s("%i%d", &x, &y);
+	printf("%d %d\n", x, y);
+}
