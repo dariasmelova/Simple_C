@@ -1,0 +1,12 @@
+/* a program that determines whether ? can be printed as 
+the character constant '?' rather than 
+the character constant escape sequence '\?'
+using conversion specifier %c in the format control string of a printf statement */
+
+#include <stdio.h>
+
+int main(void) {
+
+	printf("%c\n", '?'); 
+	printf("%c\n", '\?'); 
+}
