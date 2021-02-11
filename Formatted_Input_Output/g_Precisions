@@ -1,0 +1,19 @@
+/* a program that uses the conversion specifier g to output the value 9876.12345
+with precisions ranging from 1 to 9 */
+
+#include <stdio.h>
+
+int main(void)
+{
+	float value = 9876.12345;
+
+	printf("%.1g\n", value);
+	printf("%.2g\n", value);
+	printf("%.3g\n", value);
+	printf("%.4g\n", value);
+	printf("%.5g\n", value);
+	printf("%.6g\n", value);
+	printf("%.7g\n", value);
+	printf("%.8g\n", value);
+	printf("%.9g\n", value);
+}
