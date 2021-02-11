@@ -1,0 +1,19 @@
+// a program that demostrates %n
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+	_set_printf_count_output(1); // activate %n
+	int random_array[10];
+	int i;
+	int length = 0;
+	int total = 0;
+	printf("%-7s%-16s\n", "Value", "Total characters"); // print heading
+	for (i = 0; i < 10; i++) {
+		random_array[i] = 1 + rand() % 1000; // random numbers 1-1000
+		printf("%-7d%n\t", random_array[i], &length); // %n counts characters printed so far
+		total += length;
+		printf("%-16d\n", total);
+	}
+}
