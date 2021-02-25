@@ -1,0 +1,47 @@
+// a program, that creates, writes into and close a sequential file; then opens it for reading, reads and prints it
+#include <stdio.h>
+
+int main(void)
+{
+    unsigned int account; 
+    char name[30]; 
+    double balance; 
+    FILE* cfPtr; // clients.dat file pointer
+    if ((fopen_s(&cfPtr, "clients.dat", "w")) != NULL) {
+        puts("File could not be opened");
+    }
+    else {
+        puts("Enter the account, name, and balance or -1 to end input.");
+        printf("%s", "? ");
+        scanf_s("%d", &account);
+        if (account == -1)
+            fclose(cfPtr); // fclose closes file 
+        else {
+            while (account != -1) {
+                // fprintf writes the data into the file 
+                scanf_s("%29s%lf", name, 30, &balance);
+                fprintf_s(cfPtr, "%d %s %.2f\n", account, name, balance);
+                printf("%s", "? ");
+                scanf_s("%d", &account);
+            }
+            fclose(cfPtr); // fclose closes file   
+        }
+    }  
+
+    // fopen opens file for reading
+    if ((fopen_s(&cfPtr, "clients.dat", "r")) != NULL) {
+       puts("File could not be opened");
+    } 
+    else { // fscanf_s reads account, name and balance from file
+    printf("%-10s%-13s%s\n", "Account", "Name", "Balance");
+    fscanf_s(cfPtr, "%d%29s%lf", &account, name, 30, &balance);
+
+       //while not end of file
+       while (!feof(cfPtr)) {
+       printf("%-10d%-13s%7.2f\n", account, name, balance);
+       fscanf_s(cfPtr, "%d%29s%lf", &account, name, 30, &balance);
+       }
+
+        fclose(cfPtr); // fclose closes the file   
+    } 
+} 
