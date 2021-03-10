@@ -1,0 +1,73 @@
+// a program that randomly writes data to a random-access file and reads from it
+
+#include <stdio.h>
+          
+struct clientData {
+    unsigned int acctNum; 
+    char lastName[15];    
+    char firstName[10];  
+    double balance;  
+};                
+
+int main(void)
+{
+    FILE* cfPtr; // credit.dat file pointer
+    int counter;
+    // create clientData with default information
+    struct clientData client = { 0, "", "", 0.0 };
+     
+    if ((fopen_s(&cfPtr, "credit.dat", "w+")) != NULL) {
+        puts("File could not be opened.");
+    } 
+    else {
+        // output 100 blank records to file                              
+        for (counter = 1; counter <= 100; ++counter) {
+            fwrite(&client, sizeof(struct clientData), 1, cfPtr);
+        }   
+        // return cfPtr to beginning of file
+        rewind(cfPtr);
+
+        printf("%s", "Enter account number"
+            " ( 1 to 100, 0 to end input )\n? ");
+        scanf_s("%d", &client.acctNum);
+
+        while (client.acctNum != 0) {
+            printf("%s", "Enter lastname, firstname, balance\n? ");
+
+            fscanf_s(stdin, "%14s%9s%lf", client.lastName, 15,
+                client.firstName, 10, &client.balance);
+
+            // seek position in file to user-specified record, e.g. account #1 is in position (1-1)*structure's size = 0  
+            fseek(cfPtr, (client.acctNum - 1) *
+                sizeof(struct clientData), SEEK_SET);
+       
+            fwrite(&client, sizeof(struct clientData), 1, cfPtr);
+
+            printf("%s", "Enter account number\n? ");
+            scanf_s("%d", &client.acctNum);
+        } 
+        
+        fclose(cfPtr); 
+    } 
+    if ((fopen_s(&cfPtr, "credit.dat", "r")) != NULL) {
+        puts("File could not be opened.");
+    } 
+    else {
+        printf("%-6s%-16s%-11s%10s\n", "Acct", "Last Name",
+            "First Name", "Balance");
+
+        // read all records from file (until eof)
+        while (!feof(cfPtr)) {
+           fread(&client, sizeof(struct clientData), 1, cfPtr);
+
+            // display record
+            if (client.acctNum != 0) {
+                printf("%-6d%-16s%-11s%10.2f\n",
+                    client.acctNum, client.lastName,
+                    client.firstName, client.balance);
+            } 
+        } 
+
+        fclose(cfPtr); // fclose closes the file
+    }
+} 
